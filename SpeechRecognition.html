@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="ja-JP">
+    <meta charset="utf-8">
+    <title>Speak Test</title>
+</head>
+
+<body>
+
+    <button onclick="startbutton()">start</button>
+    <button onclick="stopbutton()">stop</button>
+
+    <script>
+
+        const SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
+        const rec = new SpeechRecognition();
+        rec.continuous = true;
+        rec.interimResults = false;
+        rec.lang = "ja-JP" // "en-US"なら英語で認識してくれる。指定がないとブラウザの言語になる
+
+        rec.onresult = function (e) {
+            console.log("on result")
+            for (var i = e.resultIndex; i < e.results.length; ++i) {
+                if (e.results[i].isFinal) {
+                    const str = e.results[i][0].transcript;
+                    console.log('Your speaking: ' + str);
+                }
+            }
+        }
+
+        function startbutton() {
+            console.log("start")
+            rec.start();
+        }
+        function stopbutton() {
+            console.log("stop")
+            rec.stop();
+        }
+    </script>
+
+</body>
+
+</html>

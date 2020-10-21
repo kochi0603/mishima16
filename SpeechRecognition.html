@@ -10,6 +10,8 @@
 
     <button onclick="startbutton()">start</button>
     <button onclick="stopbutton()">stop</button>
+    <br>
+    <textarea id="LOGAREA"></textarea>
 
     <script>
 
@@ -25,17 +27,26 @@
                 if (e.results[i].isFinal) {
                     const str = e.results[i][0].transcript;
                     console.log('Your speaking: ' + str);
+                    pushLog('Your speaking: ' + str);
                 }
             }
         }
 
         function startbutton() {
-            console.log("start")
+            console.log("start");
+            pushLog("start");
             rec.start();
         }
+
         function stopbutton() {
-            console.log("stop")
+            console.log("stop");
+            pushLog("stop");
             rec.stop();
+        }
+
+        function pushLog(str){
+            let logarea = document.getElementById("LOGAREA");
+            logarea.value = logarea.value + "\n" + str;
         }
     </script>
 

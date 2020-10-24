@@ -2,25 +2,27 @@
 <html>
 
 <head lang="ja-JP">
-    <meta charset="utf-8">
-    <title>Speak Test</title>
-</head>
-
-<body>
-
-    <button onclick="startbutton()">start</button>
-    <button onclick="stopbutton()">stop</button>
-    <br>
-    <textarea id="LOGAREA" rows=30 cols=80></textarea>
-
-    <script>
-
+<meta charset="utf-8">
+<title>Speak Test</title>
+<script type="javascript">
+<!--
         const SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
         const rec = new SpeechRecognition();
+
         rec.continuous = true;
         rec.interimResults = false;
         rec.lang = "ja-JP" // "en-US"なら英語で認識してくれる。指定がないとブラウザの言語になる
 
+        rec.addEventListener('start', (e) => console.log('start', e));  
+        rec.addEventListener('audiostart', (e) => console.log('audiostart', e));  
+        rec.addEventListener('soundstart', (e) => console.log('soundstart', e));  
+        rec.addEventListener('speechstart', (e) => console.log('speechstart', e));  
+        rec.addEventListener('speechend', (e) => console.log('speechend', e));  
+        rec.addEventListener('soundend', (e) => console.log('soundend', e));  
+        rec.addEventListener('audioend', (e) => console.log('audioend', e));  
+        rec.addEventListener('end', (e) => console.log('end', e));          
+
+        
         rec.onresult = function (e) {
             console.log("on result")
             for (var i = e.resultIndex; i < e.results.length; ++i) {
@@ -48,8 +50,13 @@
             let logarea = document.getElementById("LOGAREA");
             logarea.value = logarea.value + "\n" + str;
         }
-    </script>
 
+   </script>
+</head>
+<body>
+    <button onclick="startbutton()">start</button>
+    <button onclick="stopbutton()">stop</button>
+    <br>
+    <textarea id="LOGAREA" rows=30 cols=80></textarea>
 </body>
-
 </html>

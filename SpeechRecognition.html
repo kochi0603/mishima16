@@ -19,10 +19,12 @@
                 rec.maxAlternatives = 3;
 
                 rec.addEventListener('start', function() {
-                        $('#LOGAREA').css('color', 'background-color');
+                        $("#LOGAREA").val( $("#LOGAREA").val() + "\n" + "start" );
+                        $('#LOGAREA').css('background-color', 'red');
                 });
                 rec.addEventListener('end', function() {
-                        $('#LOGAREA').css('color', 'white');
+                        $("#LOGAREA").val( $("#LOGAREA").val() + "\n" + "stop" );
+                        $('#LOGAREA').css('background-color', 'white');
                 });
 
                 //rec.addEventListener('audiostart', (e) => console.log('audiostart', e));  
@@ -39,7 +41,7 @@
                                         //$('#LOGAREA').val( 'fixed!!\n' + results[0].transcript );
                                         $("#LOGAREA").val( $("#LOGAREA").val() + "\nFINISHED\n" + results[0].transcript );
                                 } else {
-                                        let possiblity = [].slice.call( results ).map( function( result, ia) { return ia + ':' + result.transcript; } ).join('\n\n');
+                                        let possiblity = [].slice.call( results ).map( function( result, ia ) { return ia + ':' + result.transcript; } ).join('\n\n');
                                         //$('#LOGAREA').val( 'progress(' + results.length + ')...\n' + possiblity );
                                         $("#LOGAREA").val( $("#LOGAREA").val() + "\nPROGRESS\n" + possiblity );
                                 }
@@ -50,14 +52,14 @@
                 });
 
                 $("#START_BTN").on( 'click', function() {
-                        console.log("start");
-                        $("#LOGAREA").val( $("#LOGAREA").val() + "\n" + "start" );
+                        //console.log("start");
+                        //$("#LOGAREA").val( $("#LOGAREA").val() + "\n" + "start" );
                         rec.start();
                 } );
 
                 $("#STOP_BTN").on( 'click', function() {
-                        console.log("stop");
-                        $("#LOGAREA").val( $("#LOGAREA").val() + "\n" + "stop" );
+                        //console.log("stop");
+                        //$("#LOGAREA").val( $("#LOGAREA").val() + "\n" + "stop" );
                         rec.stop();
                 } );
         });

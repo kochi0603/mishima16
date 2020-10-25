@@ -35,13 +35,15 @@
                         if( e.results.length ) {
                                 for ( let ia = e.resultIndex; ia < e.results.length; ia++) {
                                         if( e.results[ia].isFinal ) {
-                                                $("#LOGAREA").val( $("#LOGAREA").val() + "\nRESULTS LENGTH=\t" + e.results.length );
-                                                $("#LOGAREA").val( $("#LOGAREA").val() + "\nRESULTS INDEX=\t" + e.resultIndex );
-                                                //$('#LOGAREA').val( 'fixed!!\n' + results[0].transcript );
+                                                //$("#LOGAREA").val( $("#LOGAREA").val() + "\nRESULTS LENGTH=\t" + e.results.length );
+                                                //$("#LOGAREA").val( $("#LOGAREA").val() + "\nRESULTS INDEX=\t" + e.resultIndex );
                                                 $("#LOGAREA").val( $("#LOGAREA").val() + "\n認識結果=\t" + e.results[ia][0].transcript );
 
-                                                if ( e.results[ia][0].transcript == '変換' ){
+                                                if ( e.results[ia][0].transcript == '変換青' ){
                                                         $('#LOGAREA').css('background-color', 'blue');
+                                                }
+                                                if ( e.results[ia][0].transcript == '変換白' ){
+                                                        $('#LOGAREA').css('background-color', 'white');
                                                 }
                                         }
                                 }

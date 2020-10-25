@@ -21,6 +21,19 @@
                 rec.addEventListener('result', function(e) {
                     console.log(e);
                     $("#LOGAREA").val( $("#LOGAREA").val() + "\n" + e );
+
+                        if( e.results.length ) {
+                                let results = e.results[0];
+                                if( results.isFinal ) {
+                                        $('#LOGAREA').val( 'fixed!!\n' + results[0].transcript );
+                                } else {
+                                        var possiblity = [].slice.call( results ).map( function( result, ia) { return ia + ':' + result.transcript; } ).join('\n\n');
+                                        $('#LOGAREA').val( 'progress(' + results.length + ')...\n' + possiblity );
+                                }
+                        } else {
+                                $('#LOGAREA').val('結果が空です');
+                        }
+
                 });
 
                 $("#START_BTN").on( 'click', function() {

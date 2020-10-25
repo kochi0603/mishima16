@@ -19,13 +19,12 @@
                 rec.maxAlternatives = 3;
 
                 rec.addEventListener('result', function(e) {
-                        console.log(e);
-                        pushLog(e);
+                    console.log(e);
+                    $("#LOGAREA").val( $("#LOGAREA").val() + "\n" + e );
                 });
 
                 $("#START_BTN").on( 'click', function() {
                     console.log("start");
-                    pushLog();
                     $("#LOGAREA").val( $("#LOGAREA").val() + "\n" + "start" );
                     rec.start();
                 } );

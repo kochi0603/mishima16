@@ -27,24 +27,30 @@
                         $('#LOGAREA').css('background-color', 'white');
                 });
 
-                //rec.addEventListener('audiostart', (e) => console.log('audiostart', e));  
+                rec.addEventListener('audiostart', function() {
+                        $("#LOGAREA").val( $("#LOGAREA").val() + "\n" + "話しかけてみてください" );
+                });
+
+                //rec.addEventListener('audioend', (e) => console.log('audioend', e));  
+
                 //rec.addEventListener('soundstart', (e) => console.log('soundstart', e));  
+                //rec.addEventListener('soundend', (e) => console.log('soundend', e));  
+
                 //rec.addEventListener('speechstart', (e) => console.log('speechstart', e));  
                 //rec.addEventListener('speechend', (e) => console.log('speechend', e));  
-                //xrec.addEventListener('soundend', (e) => console.log('soundend', e));  
-                // rec.addEventListener('audioend', (e) => console.log('audioend', e));  
 
                 rec.addEventListener('result', function(e) {
                         if( e.results.length ) {
-                                let results = e.results[0];
-                                if( results.isFinal ) {
-                                        //$('#LOGAREA').val( 'fixed!!\n' + results[0].transcript );
-                                        $("#LOGAREA").val( $("#LOGAREA").val() + "\nFINISHED\n" + results[0].transcript );
+                                for ( let ia = e.resultIndex; ia < e.results.length; ia++) {
+                                        if( e.results[ia].isFinal ) {
+                                                //$('#LOGAREA').val( 'fixed!!\n' + results[0].transcript );
+                                                $("#LOGAREA").val( $("#LOGAREA").val() + "\nFINISHED\n" + e.results[ia][0].transcript );
+                                        }
+                                }
                                 //} else {
                                 //        let possiblity = [].slice.call( results ).map( function( result, ia ) { return ia + ':' + result.transcript; } ).join('\n\n');
                                 //        //$('#LOGAREA').val( 'progress(' + results.length + ')...\n' + possiblity );
                                 //        $("#LOGAREA").val( $("#LOGAREA").val() + "\nPROGRESS\n" + possiblity );
-                                }
                         } else {
                                 $("#LOGAREA").val( $("#LOGAREA").val() + "\n" + "結果が空です" );
                         }

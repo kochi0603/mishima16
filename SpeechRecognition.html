@@ -53,10 +53,10 @@
                                                                 colorStr = "green";
                                                         }
                                                         $('#RESULT_AREA').css('background-color', colorStr );
-                                                } else if ( current_word == 'おせ' ){
-                                                        appendResult( "いつもお世話になっております。〇〇太郎です。" );
+                                                } else if ( current_word == 'いつ' ){
+                                                        appendResult( 'いつもお世話になっております。〇〇太郎です。' );
                                                 } else if ( current_word == 'よろ' ){
-                                                        appendResult( "よろしくお願いいたします。" );
+                                                        appendResult( 'よろしくお願いいたします。' );
                                                 }
 
                                                 previous_word = current_word;
@@ -73,7 +73,6 @@
                 $("#START_BTN").on( 'click', function() {
                         rec.start();
                 } );
-
                 $("#STOP_BTN").on( 'click', function() {
                         rec.stop();
                 } );
@@ -89,6 +88,6 @@
     <br><font size="2">ログ</font><br>
     <textarea id="LOG_AREA" rows=4 cols=80></textarea>
     <br><font size="2">認識結果</font><br>
-    <textarea id="RESULT_AREA" rows=30 cols=80></textarea>
+    <textarea id="RESULT_AREA" rows=16 cols=80></textarea>
 </body>
 </html>

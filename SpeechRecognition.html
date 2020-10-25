@@ -9,6 +9,10 @@
 <script type="text/javascript">
 <!--
         $(document).ready(function(){
+                function appendLog(str) {
+                        $("#LOG_AREA").val( $("#LOG_AREA").val() + "\n" + str );
+                });
+
                 // Chrome と Firefox 両方に対応するための書き方
                 const SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
                 const rec = new SpeechRecognition();
@@ -18,28 +22,29 @@
                 rec.lang = "ja-JP" // "en-US"
 
                 rec.addEventListener('start', function() {
-                        $("#LOGAREA").val( $("#LOGAREA").val() + "\n" + "開始" );
+                        //$("#LOG_AREA").val( $("#LOG_AREA").val() + "\n" + "開始" );
+                        appendLog("開始");
                 });
                 rec.addEventListener('end', function() {
-                        $("#LOGAREA").val( $("#LOGAREA").val() + "\n" + "終了" );
+                        $("#LOG_AREA").val( $("#LOG_AREA").val() + "\n" + "終了" );
                 });
                 rec.addEventListener('audiostart', function() {
-                        $("#LOGAREA").val( $("#LOGAREA").val() + "\n" + "準備OK" );
+                        $("#LOG_AREA").val( $("#LOG_AREA").val() + "\n" + "準備OK" );
                 });
 
                 rec.addEventListener('result', function(e) {
                         if( e.results.length ) {
-                                $("#LOGAREA").val( $("#LOGAREA").val() + "\nRESULTS INDEX=\t" + e.resultIndex );
+                                $("#LOG_AREA").val( $("#LOG_AREA").val() + "\nRESULTS INDEX=\t" + e.resultIndex );
                                 for ( let ia = e.resultIndex; ia < e.results.length; ia++) {
                                         if( e.results[ia].isFinal ) {
                                                 //$("#LOGAREA").val( $("#LOGAREA").val() + "\nRESULTS LENGTH=\t" + e.results.length );
-                                                $("#LOGAREA").val( $("#LOGAREA").val() + "\n認識結果=\t" + e.results[ia][0].transcript );
+                                                $("#LOG_AREA").val( $("#LOG_AREA").val() + "\n認識結果=\t" + e.results[ia][0].transcript );
 
                                                 if ( e.results[ia][0].transcript == '青変換' ){
-                                                        $('#LOGAREA').css('background-color', 'blue');
+                                                        $('#LOG_AREA').css('background-color', 'blue');
                                                 }
                                                 if ( e.results[ia][0].transcript == '白変換' ){
-                                                        $('#LOGAREA').css('background-color', 'white');
+                                                        $('#LOG_AREA').css('background-color', 'white');
                                                 }
                                         }
                                 }
@@ -61,6 +66,8 @@
     <button id="START_BTN">start</button>
     <button id="STOP_BTN">stop</button>
     <br>
-    <textarea id="LOGAREA" rows=30 cols=80></textarea>
+    <textarea id="CAN_AREA" rows=2 cols=80></textarea>
+    <br>
+    <textarea id="LOG_AREA" rows=30 cols=80></textarea>
 </body>
 </html>

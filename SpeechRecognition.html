@@ -11,7 +11,7 @@
                         $("#RESULT_AREA").val( $("#RESULT_AREA").val() + "\n" + str );
                 };
                 function showProcess(str) {
-                        $("#PROCESS_AREA").val( str );
+                        $("#PROCESS_AREA").val( str + "\n" + $("#PROCESS_AREA").val( str ) );
                 };
 
                 // Chrome と Firefox 両方に対応するための書き方
@@ -76,9 +76,9 @@
 <body>
     <button id="START_BTN">start</button>
     <button id="STOP_BTN">stop</button>
-    <br>
+    <br><h4>ログ</h4>
     <textarea id="PROCESS_AREA" rows=4 cols=80></textarea>
-    <br>
+    <br><h4>認識結果</h4>
     <textarea id="RESULT_AREA" rows=30 cols=80></textarea>
 </body>
 </html>

@@ -39,7 +39,9 @@
                                 for ( let ia = event.resultIndex; ia < event.results.length; ia++) {
                                         if( event.results[ia].isFinal ) {
                                                 current_word = event.results[ia][0].transcript;
-                                                appendResult( "認識結果[" + ia + "]\t" + current_word );
+                                                showProcess( "認識結果[" + ia + "]");
+                                                //appendResult( "認識結果[" + ia + "]\t" + current_word );
+                                                appendResult( current_word );
                                                 if ( current_word == '変換' ){
                                                         let colorStr = "white";
                                                         if ( previous_word == '青' ){

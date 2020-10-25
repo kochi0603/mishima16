@@ -8,6 +8,22 @@
         src="jquery-3.5.1.js"></script>
 <script type="text/javascript">
 <!--
+        function startbutton() {
+            console.log("start");
+            pushLog("start");
+            rec.start();
+        }
+
+        function stopbutton() {
+            console.log("stop");
+            pushLog("stop");
+            rec.stop();
+        }
+
+        function pushLog(str){
+            $("#LOGAREA").val( $("#LOGAREA").val() + "\n" + str );
+        }
+
         $(document).ready(function(){
                 const SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
                 const rec = new SpeechRecognition();
@@ -61,22 +77,6 @@
 //                    }
 //                }
 
-                function startbutton() {
-                    console.log("start");
-                    pushLog("start");
-                    rec.start();
-                }
-
-                function stopbutton() {
-                    console.log("stop");
-                    pushLog("stop");
-                    rec.stop();
-                }
-
-                function pushLog(str){
-                    let logarea = document.getElementById("LOGAREA");
-                    logarea.value = logarea.value + "\n" + str;
-                }
         });
 //-->
 </script>

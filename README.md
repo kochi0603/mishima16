@@ -1,6 +1,10 @@
-# Mishima.syk #16
-## [Mishima.syk #16](https://connpass.com/event/164605/)
+##### [Mishima.syk #16](https://connpass.com/event/164605/)
+# 音声認識機能で遊ぶ( SpeechRecognition )
+## 在宅勤務が多くなり、ヘッドセットを付ける機会が増えました。音声認識に適した環境です。では、遊んでみましょう。
 
+#### 「Speech Recognition API」でググると結構出てきます。
+
+# サンプルで実装したページ
 https://kochi0603.github.io/mishima16/SpeechRecognition.html
 
 ## 参考にしたサイト

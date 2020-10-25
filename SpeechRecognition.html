@@ -25,13 +25,13 @@
                 let current_word = "";
 
                 rec.addEventListener('start', function() {
-                        appendLog("開始");
+                        showProcess("開始");
                 });
                 rec.addEventListener('end', function() {
-                        appendLog("終了");
+                        showProcess("終了");
                 });
                 rec.addEventListener('audiostart', function() {
-                        appendLog("準備OK");
+                        showProcess("準備OK");
                 });
 
                 rec.addEventListener('result', function(event) {
@@ -41,16 +41,18 @@
                                                 current_word = event.results[ia][0].transcript;
                                                 appendLog( "認識結果[" + ia + "]\t" + current_word );
                                                 if ( current_word == '変換' ){
+                                                        let colorStr = "white";
                                                         if ( previous_word == '青' ){
-                                                                $('#LOG_AREA').css('background-color', 'blue');
-                                                        } else if ( previous_word == '白' ){
-                                                                $('#LOG_AREA').css('background-color', 'white');
+                                                                colorStr = "blue";
+                                                        } else if ( previous_word == '緑' ){
+                                                                colorStr = "green";
                                                         }
+                                                        $('#LOG_AREA').css('background-color', colorStr );
                                                 }
                                                 previous_word = current_word;
                                         } else {
                                                 let possiblity = [].slice.call( event.results[ia] ).map( 
-                                                                function( result, ib ) { return ib + ':' + result.transcript; } 
+                                                                function( result, ib ) { return result.transcript; } 
                                                         ).join('\n\n');
                                                 showProcess( possiblity );
                                         }

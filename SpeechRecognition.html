@@ -8,7 +8,7 @@
 <!--
         $(document).ready(function(){
                 function appendLog(str) {
-                        $("#LOG_AREA").val( str + "\n" + $("#LOG_AREA").val( str ) );
+                        $("#LOG_AREA").val( str + "\n" + $("#LOG_AREA").val() );
                 };
                 function appendResult(str) {
                         $("#RESULT_AREA").val( $("#RESULT_AREA").val() + "\n" + str );
@@ -76,9 +76,9 @@
 <body>
     <button id="START_BTN">start</button>
     <button id="STOP_BTN">stop</button>
-    <br><h5>ログ</h5>
+    <br><font size="2">ログ</font>
     <textarea id="LOG_AREA" rows=4 cols=80></textarea>
-    <br><h5>認識結果</h5>
+    <br><font size="2">認識結果</font>
     <textarea id="RESULT_AREA" rows=30 cols=80></textarea>
 </body>
 </html>

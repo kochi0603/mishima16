@@ -19,14 +19,10 @@
 
                 rec.addEventListener('start', function() {
                         $("#LOGAREA").val( $("#LOGAREA").val() + "\n" + "開始" );
-                        $('#LOGAREA').css('background-color', 'silver');
                 });
-
                 rec.addEventListener('end', function() {
                         $("#LOGAREA").val( $("#LOGAREA").val() + "\n" + "終了" );
-                        $('#LOGAREA').css('background-color', 'white');
                 });
-
                 rec.addEventListener('audiostart', function() {
                         $("#LOGAREA").val( $("#LOGAREA").val() + "\n" + "準備OK" );
                 });

@@ -11,18 +11,42 @@
 
         rec.continuous = true;
         rec.interimResults = false;
-        rec.lang = "ja-JP" // "en-US"なら英語で認識してくれる。指定がないとブラウザの言語になる
+        rec.interimResults = true;
+        rec.lang = "ja-JP" // "en-US"
+        rec.maxAlternatives = 3;
 
-        rec.addEventListener('start', (e) => console.log('start', e));  
-        rec.addEventListener('audiostart', (e) => console.log('audiostart', e));  
-        rec.addEventListener('soundstart', (e) => console.log('soundstart', e));  
-        rec.addEventListener('speechstart', (e) => console.log('speechstart', e));  
-        rec.addEventListener('speechend', (e) => console.log('speechend', e));  
-        rec.addEventListener('soundend', (e) => console.log('soundend', e));  
-        rec.addEventListener('audioend', (e) => console.log('audioend', e));  
-        rec.addEventListener('end', (e) => console.log('end', e));          
+//        rec.addEventListener('start', (e) => console.log('start', e));  
+//        rec.addEventListener('audiostart', (e) => console.log('audiostart', e));  
+//        rec.addEventListener('soundstart', (e) => console.log('soundstart', e));  
+//        rec.addEventListener('speechstart', (e) => console.log('speechstart', e));  
+//        rec.addEventListener('speechend', (e) => console.log('speechend', e));  
+//        rec.addEventListener('soundend', (e) => console.log('soundend', e));  
+//        rec.addEventListener('audioend', (e) => console.log('audioend', e));  
+//        rec.addEventListener('end', (e) => console.log('end', e));          
 
-        
+        rec.addEventListener('start', function() {
+                document.getElementById('LOGAREA').style.background = 'rgba(255,100,100,.8)';
+        });
+        rec.addEventListener('end', function() {
+                document.getElementById('LOGAREA').style.background = 'rgba(200,200,200,.8)';
+        });
+        rec.addEventListener('result', function(e) {
+        	console.log(e);
+                pushLog(e);
+                if(e.results.length) {
+                        var results = e.results[0];
+                        if(results.isFinal) {
+                                document.getElementById('LOGAREA').textContent = 'fixed!!\n' + results[0].transcript;
+                        } else {
+                                var possiblity = [].slice.call( results ).map(　function(result, i) { return i + ':' + result.transcript; }　).join('\n\n');
+                                document.getElementById('LOGAREA').textContent = 'progress('+results.length+')...\n' + possiblity;
+                        }
+                } else {
+                        document.getElementById('LOGAREA').textContent = '結果が空です';
+                }
+        });
+
+
         rec.onresult = function (e) {
             console.log("on result")
             for (var i = e.resultIndex; i < e.results.length; ++i) {

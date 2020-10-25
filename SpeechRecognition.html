@@ -11,7 +11,7 @@
         $(document).ready(function(){
                 function appendLog(str) {
                         $("#LOG_AREA").val( $("#LOG_AREA").val() + "\n" + str );
-                });
+                };
 
                 // Chrome と Firefox 両方に対応するための書き方
                 const SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;

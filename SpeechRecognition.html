@@ -20,7 +20,7 @@
 
                 rec.addEventListener('start', function() {
                         $("#LOGAREA").val( $("#LOGAREA").val() + "\n" + "start" );
-                        $('#LOGAREA').css('background-color', 'red');
+                        $('#LOGAREA').css('background-color', 'silver');
                 });
                 rec.addEventListener('end', function() {
                         $("#LOGAREA").val( $("#LOGAREA").val() + "\n" + "stop" );
@@ -40,10 +40,10 @@
                                 if( results.isFinal ) {
                                         //$('#LOGAREA').val( 'fixed!!\n' + results[0].transcript );
                                         $("#LOGAREA").val( $("#LOGAREA").val() + "\nFINISHED\n" + results[0].transcript );
-                                } else {
-                                        let possiblity = [].slice.call( results ).map( function( result, ia ) { return ia + ':' + result.transcript; } ).join('\n\n');
-                                        //$('#LOGAREA').val( 'progress(' + results.length + ')...\n' + possiblity );
-                                        $("#LOGAREA").val( $("#LOGAREA").val() + "\nPROGRESS\n" + possiblity );
+                                //} else {
+                                //        let possiblity = [].slice.call( results ).map( function( result, ia ) { return ia + ':' + result.transcript; } ).join('\n\n');
+                                //        //$('#LOGAREA').val( 'progress(' + results.length + ')...\n' + possiblity );
+                                //        $("#LOGAREA").val( $("#LOGAREA").val() + "\nPROGRESS\n" + possiblity );
                                 }
                         } else {
                                 $("#LOGAREA").val( $("#LOGAREA").val() + "\n" + "結果が空です" );

@@ -18,34 +18,47 @@
                 rec.lang = "ja-JP" // "en-US"
                 rec.maxAlternatives = 3;
 
-                rec.addEventListener('result', function(e) {
-                    console.log(e);
-                    $("#LOGAREA").val( $("#LOGAREA").val() + "\n" + e );
+                rec.addEventListener('start', function() {
+                        $('#LOGAREA').css('color', 'Red');
+                });
+                rec.addEventListener('end', function() {
+                        $('#LOGAREA').css('color', 'white');
+                });
 
+                //rec.addEventListener('audiostart', (e) => console.log('audiostart', e));  
+                //rec.addEventListener('soundstart', (e) => console.log('soundstart', e));  
+                //rec.addEventListener('speechstart', (e) => console.log('speechstart', e));  
+                //rec.addEventListener('speechend', (e) => console.log('speechend', e));  
+                //xrec.addEventListener('soundend', (e) => console.log('soundend', e));  
+                // rec.addEventListener('audioend', (e) => console.log('audioend', e));  
+
+                rec.addEventListener('result', function(e) {
                         if( e.results.length ) {
                                 let results = e.results[0];
                                 if( results.isFinal ) {
                                         $('#LOGAREA').val( 'fixed!!\n' + results[0].transcript );
+                                        $("#LOGAREA").val( $("#LOGAREA").val() + "\nFINISHED\n" + results[0].transcript );
                                 } else {
-                                        var possiblity = [].slice.call( results ).map( function( result, ia) { return ia + ':' + result.transcript; } ).join('\n\n');
-                                        $('#LOGAREA').val( 'progress(' + results.length + ')...\n' + possiblity );
+                                        let possiblity = [].slice.call( results ).map( function( result, ia) { return ia + ':' + result.transcript; } ).join('\n\n');
+                                        //$('#LOGAREA').val( 'progress(' + results.length + ')...\n' + possiblity );
+                                        $("#LOGAREA").val( $("#LOGAREA").val() + "\nPROGRESS\n" + possiblity );
                                 }
                         } else {
-                                $('#LOGAREA').val('結果が空です');
+                                $("#LOGAREA").val( $("#LOGAREA").val() + "\n" + "結果が空です" );
                         }
 
                 });
 
                 $("#START_BTN").on( 'click', function() {
-                    console.log("start");
-                    $("#LOGAREA").val( $("#LOGAREA").val() + "\n" + "start" );
-                    rec.start();
+                        console.log("start");
+                        $("#LOGAREA").val( $("#LOGAREA").val() + "\n" + "start" );
+                        rec.start();
                 } );
 
                 $("#STOP_BTN").on( 'click', function() {
-                    console.log("stop");
-                    $("#LOGAREA").val( $("#LOGAREA").val() + "\n" + "stop" );
-                    rec.stop();
+                        console.log("stop");
+                        $("#LOGAREA").val( $("#LOGAREA").val() + "\n" + "stop" );
+                        rec.stop();
                 } );
         });
 //-->

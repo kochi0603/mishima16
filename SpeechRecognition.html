@@ -19,7 +19,7 @@
                 rec.maxAlternatives = 3;
 
                 rec.addEventListener('start', function() {
-                        $('#LOGAREA').css('color', 'Red');
+                        $('#LOGAREA').css('color', 'background-color');
                 });
                 rec.addEventListener('end', function() {
                         $('#LOGAREA').css('color', 'white');
@@ -36,7 +36,7 @@
                         if( e.results.length ) {
                                 let results = e.results[0];
                                 if( results.isFinal ) {
-                                        $('#LOGAREA').val( 'fixed!!\n' + results[0].transcript );
+                                        //$('#LOGAREA').val( 'fixed!!\n' + results[0].transcript );
                                         $("#LOGAREA").val( $("#LOGAREA").val() + "\nFINISHED\n" + results[0].transcript );
                                 } else {
                                         let possiblity = [].slice.call( results ).map( function( result, ia) { return ia + ':' + result.transcript; } ).join('\n\n');

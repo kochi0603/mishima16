@@ -9,14 +9,13 @@
 <script type="text/javascript">
 <!--
         $(document).ready(function(){
+                // Chrome と Firefox 両方に対応するための書き方
                 const SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
                 const rec = new SpeechRecognition();
 
-                rec.continuous = true;
-                rec.interimResults = false;
-                rec.interimResults = true;
+                rec.continuous = true; // 継続して音声認識を行う
+                rec.interimResults = false;　// 変換途中の結果を受け取りたいときtrueにする。変換途中の場合、isFinalはfalseとなっている
                 rec.lang = "ja-JP" // "en-US"
-                rec.maxAlternatives = 3;
 
                 rec.addEventListener('start', function() {
                         $("#LOGAREA").val( $("#LOGAREA").val() + "\n" + "開始" );

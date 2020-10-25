@@ -4,16 +4,19 @@
 <head lang="ja-JP">
 <meta charset="utf-8">
 <title>Speak Test</title>
-<script type="javascript">
+<script type="text/javascript" 
+        src="/static/jQuery-3.5.1/js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
 <!--
-        const SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
-        const rec = new SpeechRecognition();
+        $(document).ready(function(){
+                const SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
+                const rec = new SpeechRecognition();
 
-        rec.continuous = true;
-        rec.interimResults = false;
-        rec.interimResults = true;
-        rec.lang = "ja-JP" // "en-US"
-        rec.maxAlternatives = 3;
+                rec.continuous = true;
+                rec.interimResults = false;
+                rec.interimResults = true;
+                rec.lang = "ja-JP" // "en-US"
+                rec.maxAlternatives = 3;
 
 //        rec.addEventListener('start', (e) => console.log('start', e));  
 //        rec.addEventListener('audiostart', (e) => console.log('audiostart', e));  
@@ -24,58 +27,59 @@
 //        rec.addEventListener('audioend', (e) => console.log('audioend', e));  
 //        rec.addEventListener('end', (e) => console.log('end', e));          
 
-        rec.addEventListener('start', function() {
-                document.getElementById('LOGAREA').style.background = 'rgba(255,100,100,.8)';
-        });
-        rec.addEventListener('end', function() {
-                document.getElementById('LOGAREA').style.background = 'rgba(200,200,200,.8)';
-        });
-        rec.addEventListener('result', function(e) {
-        	console.log(e);
-                pushLog(e);
-                if(e.results.length) {
-                        var results = e.results[0];
-                        if(results.isFinal) {
-                                document.getElementById('LOGAREA').textContent = 'fixed!!\n' + results[0].transcript;
+                rec.addEventListener('start', function() {
+                        document.getElementById('LOGAREA').style.background = 'rgba(255,100,100,.8)';
+                });
+                rec.addEventListener('end', function() {
+                        document.getElementById('LOGAREA').style.background = 'rgba(200,200,200,.8)';
+                });
+                rec.addEventListener('result', function(e) {
+                        console.log(e);
+                        pushLog(e);
+                        if(e.results.length) {
+                                var results = e.results[0];
+                                if(results.isFinal) {
+                                        document.getElementById('LOGAREA').textContent = 'fixed!!\n' + results[0].transcript;
+                                } else {
+                                        var possiblity = [].slice.call( results ).map(　function(result, i) { return i + ':' + result.transcript; }　).join('\n\n');
+                                        document.getElementById('LOGAREA').textContent = 'progress('+results.length+')...\n' + possiblity;
+                                }
                         } else {
-                                var possiblity = [].slice.call( results ).map(　function(result, i) { return i + ':' + result.transcript; }　).join('\n\n');
-                                document.getElementById('LOGAREA').textContent = 'progress('+results.length+')...\n' + possiblity;
+                                document.getElementById('LOGAREA').textContent = '結果が空です';
                         }
-                } else {
-                        document.getElementById('LOGAREA').textContent = '結果が空です';
+                });
+
+
+//                rec.onresult = function (e) {
+//                    console.log("on result")
+//                    for (var i = e.resultIndex; i < e.results.length; ++i) {
+//                        if (e.results[i].isFinal) {
+//                            const str = e.results[i][0].transcript;
+//                            console.log('Your speaking: ' + str);
+//                            pushLog('Your speaking: ' + str);
+//                        }
+//                    }
+//                }
+
+                function startbutton() {
+                    console.log("start");
+                    pushLog("start");
+                    rec.start();
+                }
+
+                function stopbutton() {
+                    console.log("stop");
+                    pushLog("stop");
+                    rec.stop();
+                }
+
+                function pushLog(str){
+                    let logarea = document.getElementById("LOGAREA");
+                    logarea.value = logarea.value + "\n" + str;
                 }
         });
-
-
-        rec.onresult = function (e) {
-            console.log("on result")
-            for (var i = e.resultIndex; i < e.results.length; ++i) {
-                if (e.results[i].isFinal) {
-                    const str = e.results[i][0].transcript;
-                    console.log('Your speaking: ' + str);
-                    pushLog('Your speaking: ' + str);
-                }
-            }
-        }
-
-        function startbutton() {
-            console.log("start");
-            pushLog("start");
-            rec.start();
-        }
-
-        function stopbutton() {
-            console.log("stop");
-            pushLog("stop");
-            rec.stop();
-        }
-
-        function pushLog(str){
-            let logarea = document.getElementById("LOGAREA");
-            logarea.value = logarea.value + "\n" + str;
-        }
-
-   </script>
+//-->
+</script>
 </head>
 <body>
     <button onclick="startbutton()">start</button>

@@ -41,10 +41,10 @@
                         if( event.results.length ) {
                                 for ( let ia = event.resultIndex; ia < event.results.length; ia++) {
                                         if( event.results[ia].isFinal ) {
-                                                current_word = event.results[ia][0].transcript;
                                                 setStatus( "認識結果[" + ia + "]");
-                                                //appendResult( "認識結果[" + ia + "]\t" + current_word );
+                                                current_word = event.results[ia][0].transcript;
                                                 appendResult( current_word );
+
                                                 if ( current_word == '変換' ){
                                                         let colorStr = "white";
                                                         if ( previous_word == '青' ){
@@ -53,7 +53,12 @@
                                                                 colorStr = "green";
                                                         }
                                                         $('#RESULT_AREA').css('background-color', colorStr );
+                                                } else if ( current_word == 'おせ' ){
+                                                        appendResult( ”いつもお世話になっております。〇〇太郎です。” );
+                                                } else if ( current_word == 'よろ' ){
+                                                        appendResult( ”よろしくお願いいたします。” );
                                                 }
+
                                                 previous_word = current_word;
                                         } else {
                                                 let possiblity = [].slice.call( event.results[ia] ).map( 
@@ -77,6 +82,7 @@
 </script>
 </head>
 <body>
+    <font size="2">音声認識サンプル( Speech Recognition API )</font><br>
     <button id="START_BTN">start</button>
     <button id="STOP_BTN">stop</button>
     <input type="text" id="STATUS_LABEL" readonly="readonly" value="未実行"/>

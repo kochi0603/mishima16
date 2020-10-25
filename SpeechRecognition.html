@@ -21,7 +21,6 @@
                 // Chrome と Firefox 両方に対応するための書き方
                 const SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
                 const rec = new SpeechRecognition();
-                        $("#LOG_AREA").val( str + "\n" + $("#LOG_AREA").val() );
 
                 rec.continuous = true; // 継続して音声認識を行う
                 rec.interimResults = true;　// 変換途中の結果を受け取りたいときtrueにする。変換途中の場合、isFinalはfalseとなっている

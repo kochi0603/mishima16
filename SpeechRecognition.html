@@ -8,22 +8,6 @@
         src="jquery-3.5.1.js"></script>
 <script type="text/javascript">
 <!--
-        function startbutton() {
-            console.log("start");
-            pushLog("start");
-            rec.start();
-        }
-
-        function stopbutton() {
-            console.log("stop");
-            pushLog("stop");
-            rec.stop();
-        }
-
-        function pushLog(str){
-            $("#LOGAREA").val( $("#LOGAREA").val() + "\n" + str );
-        }
-
         $(document).ready(function(){
                 const SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
                 const rec = new SpeechRecognition();
@@ -39,13 +23,25 @@
                         pushLog(e);
                 });
 
+                $("#START_BTN").on( 'click', function() {
+                    console.log("start");
+                    pushLog();
+                    $("#LOGAREA").val( $("#LOGAREA").val() + "\n" + "start" );
+                    rec.start();
+                } );
+
+                $("#STOP_BTN").on( 'click', function() {
+                    console.log("stop");
+                    $("#LOGAREA").val( $("#LOGAREA").val() + "\n" + "stop" );
+                    rec.stop();
+                } );
         });
 //-->
 </script>
 </head>
 <body>
-    <button onclick="startbutton()">start</button>
-    <button onclick="stopbutton()">stop</button>
+    <button id="START_BTN">start</button>
+    <button id="STOP_BTN">stop</button>
     <br>
     <textarea id="LOGAREA" rows=30 cols=80></textarea>
 </body>

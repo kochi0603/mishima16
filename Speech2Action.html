@@ -7,13 +7,7 @@
 <script type="text/javascript" src="static/RDKit_minimal.js"></script>
 <script type="text/javascript">
 <!--
-        Module = {
-                onRuntimeInitialized: function () {
-                    console.log('version: ' + Module.version());
-                }
-        };
-
-        $(document).ready(function(){
+       $(document).ready(function(){
                 function setStatus(str) {
                         $("#STATUS_LABEL").val( str );
                 };
@@ -33,7 +27,7 @@
                 // 変換途中の結果を受け取りたいときtrueにする。変換途中の時は、isFinalはfalseとなっている
                 rec.interimResults = true;
                 // 複数の言語に変換可能
-                rec.lang = "ja-JP" // "en-US"
+                rec.lang = "en-US"
 
                 let previous_word = "";
                 let current_word = "";
@@ -62,11 +56,11 @@
                                 appendResult( current_word );
                                 showProcess( "" );
 
-                                if ( current_word == '変換' ){
+                                if ( current_word == 'convert' ){
                                         let colorStr = "white";
-                                        if ( previous_word == '青' ){
+                                        if ( previous_word == 'blue' ){
                                                 colorStr = "blue";
-                                        } else if ( previous_word == '緑' ){
+                                        } else if ( previous_word == 'green' ){
                                                 colorStr = "green";
                                         } else {
                                                 console.log('version: ' + Module.version());
@@ -78,10 +72,8 @@
                                                 mol.draw_to_canvas(canvas, -1, -1);
                                         }
                                         $('#RESULT_AREA').css('background-color', colorStr );
-                                } else if ( current_word == 'いつ' ){
+                                } else if ( current_word == 'when' ){
                                         appendResult( 'いつもお世話になっております。〇〇太郎です。' );
-                                } else if ( current_word == 'よろ' ){
-                                        appendResult( 'よろしくお願いいたします。' );
                                 }
 
                                 previous_word = current_word;

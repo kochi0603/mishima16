@@ -3,7 +3,8 @@
 <head lang="ja-JP">
 <meta charset="utf-8">
 <title>Speach2Text</title>
-<script type="text/javascript" src="jquery-3.5.1.js"></script>
+<script type="text/javascript" src="static/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="static/RDKit_minimal.js"></script>
 <script type="text/javascript">
 <!--
         $(document).ready(function(){
@@ -102,5 +103,9 @@
         <font size="2">認識結果</font>
     <br>
         <textarea id="RESULT_AREA" rows=16 cols=80></textarea>
+    <br>
+    <div id="molecule">
+        <div id="drawing"></div>
+    </div>
 </body>
 </html>

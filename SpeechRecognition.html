@@ -53,6 +53,7 @@
                                 setStatus( "認識結果[" + last_idx + "]");
                                 current_word = event.results[ last_idx ][0].transcript;
                                 appendResult( current_word );
+                                showProcess( "" );
 
                                 if ( current_word == '変換' ){
                                         let colorStr = "white";

@@ -48,8 +48,7 @@
 			if( event.results[ last_idx ].isFinal ) {
 				// 変換が終わった場合の処理
 				setStatus( "認識結果[" + last_idx + "]");
-				current_word = event.results[ last_idx ][0].transcript;
-				appendResult( current_word );
+				appendResult( event.results[ last_idx ][0].transcript.trim() );
 				showProcess( "" );
 
 			} else {
@@ -62,11 +61,11 @@
 		});
 
 		$("#START_BTN").on( 'click', function() {
-				rec.start();
-		} );
+			rec.start();
+		});
 		$("#STOP_BTN").on( 'click', function() {
-				rec.stop();
-		} );
+			rec.stop();
+		});
 	});
 //-->
 </script>

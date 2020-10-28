@@ -62,6 +62,11 @@
                                                 colorStr = "blue";
                                         } else if ( previous_word == '緑' ){
                                                 colorStr = "green";
+                                        } else {
+                                                let mol = Module.get_mol( previous_word );
+                                                let svg = mol.get_svg();
+                                                let canvas = document.getElementById("MOL_CANVAS");
+                                                mol.draw_to_canvas(canvas, -1, -1);
                                         }
                                         $('#RESULT_AREA').css('background-color', colorStr );
                                 } else if ( current_word == 'いつ' ){
@@ -87,7 +92,30 @@
                         rec.stop();
                 } );
         });
-//-->
+//        var smi = document.getElementById('smiles_input').value;
+
+//         var Module = {
+//                 onRuntimeInitialized: function () {
+//                         console.log('version: ' + Module.version());
+//                         var m1 = Module.get_mol("c1ccccc1O");
+//                         console.log('smiles: ' + m1.get_smiles());
+//                         m1.delete();
+//                         callback("CC(=O)Oc1ccccc1C(=O)O");
+//                 }
+//         };
+//         function draw(mol) {
+//                 var details = {};
+//                 draw_with_highlights(mol, details);
+//                 return;
+//                 var svg = mol.get_svg();
+//                 if (svg == "") return;
+//                 var ob = document.getElementById("drawing");
+//                 ob.outerHTML = "<div id='drawing'>" + svg + "</div>";
+//                 var canvas = document.getElementById("rdkit-canvas");
+//                 mol.draw_to_canvas(canvas, -1, -1);
+//         }
+
+        //-->
 </script>
 </head>
 <body>
@@ -104,8 +132,7 @@
     <br>
         <textarea id="RESULT_AREA" rows=16 cols=80></textarea>
     <br>
-    <div id="molecule">
-        <div id="drawing"></div>
+    <div id="MOL_CANVAS">
     </div>
 </body>
 </html>

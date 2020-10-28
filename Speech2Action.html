@@ -69,6 +69,9 @@
                                         } else if ( previous_word == '緑' ){
                                                 colorStr = "green";
                                         } else {
+                                                console.log('version: ' + Module.version());
+                                                let mol0 = Module.get_mol( "CC(=O)Oc1ccccc1C(=O)O" );
+                                                console.log(mol0);
                                                 let mol = Module.get_mol( previous_word );
                                                 let svg = mol.get_svg();
                                                 let canvas = document.getElementById("MOL_CANVAS");

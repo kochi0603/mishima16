@@ -28,9 +28,6 @@
                 // 複数の言語に変換可能
                 rec.lang = "ja-JP" // "en-US"
 
-                let previous_word = "";
-                let current_word = "";
-
                 rec.addEventListener('start', function() {
                         setStatus("開始");
                 });
@@ -55,21 +52,6 @@
                                 appendResult( current_word );
                                 showProcess( "" );
 
-                                if ( current_word == '変換' ){
-                                        let colorStr = "white";
-                                        if ( previous_word == '青' ){
-                                                colorStr = "blue";
-                                        } else if ( previous_word == '緑' ){
-                                                colorStr = "green";
-                                        }
-                                        $('#RESULT_AREA').css('background-color', colorStr );
-                                } else if ( current_word == 'いつ' ){
-                                        appendResult( 'いつもお世話になっております。〇〇太郎です。' );
-                                } else if ( current_word == 'よろ' ){
-                                        appendResult( 'よろしくお願いいたします。' );
-                                }
-
-                                previous_word = current_word;
                         } else {
                                 // 変換途中の入力情報
                                 let possiblity = [].slice.call( event.results[ last_idx ] ).map( 

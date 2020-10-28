@@ -58,9 +58,9 @@
 
 				console.log('version: ' + Module.version());
 				let mol0 = Module.get_mol( "CC(=O)Oc1ccccc1C(=O)O" );
-				console.log(mol0);
-				let svg = mol0.get_svg();
-				$("#DRAWING").val(svg);
+				//console.log(mol0);
+				//let svg = mol0.get_svg();
+				//$("#DRAWING").val(svg);
 				let canvas = document.getElementById("MOL_CANVAS");
 				mol0.draw_to_canvas(canvas, -1, -1);
 
@@ -116,8 +116,8 @@
 	<br>
 		<textarea id="RESULT_AREA" rows=16 cols=80></textarea>
 	<br>
-	<canvas id="MOL_CANVAS" width="400" height="300" style="border:1px solid #000000;"></canvas>
-	<div id="DRAWING"></div>
+	<canvas id="MOL_CANVAS" width="320" height="240" style="border:1px solid #000000;"></canvas>
+	<!--<div id="DRAWING"></div>-->
 	</div>
 </body>
 </html>

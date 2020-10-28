@@ -27,7 +27,7 @@
                 // 変換途中の結果を受け取りたいときtrueにする。変換途中の時は、isFinalはfalseとなっている
                 rec.interimResults = true;
                 // 複数の言語に変換可能
-                rec.lang = "en-US"
+                rec.lang = "ja-JP" // "en-US"
 
                 let previous_word = "";
                 let current_word = "";
@@ -55,8 +55,12 @@
                                 current_word = event.results[ last_idx ][0].transcript;
                                 appendResult( current_word );
                                 showProcess( "" );
+ 
+                               console.log('version: ' + Module.version());
+                               let mol0 = Module.get_mol( "CC(=O)Oc1ccccc1C(=O)O" );
+                               console.log(mol0);
 
-                                if ( current_word == 'convert' ){
+                                if ( current_word == '変換' ){
                                         let colorStr = "white";
                                         if ( previous_word == 'blue' ){
                                                 colorStr = "blue";

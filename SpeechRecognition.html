@@ -46,34 +46,33 @@
                         if( ! event.results.length ) {
                                 return;
                         }
-                        //for ( let ia = event.resultIndex; ia < event.results.length; ia++) {
-                                if( event.results[event.results.length - 1 ].isFinal ) {
-                                        setStatus( "認識結果[" + (event.results.length - 1) + "]");
-                                        current_word = event.results[event.results.length - 1 ][0].transcript;
-                                        appendResult( current_word );
+                        let last_idx = event.results.length - 1;
+                        if( event.results[ last_idx ].isFinal ) {
+                                setStatus( "認識結果[" + last_idx + "]");
+                                current_word = event.results[ last_idx ][0].transcript;
+                                appendResult( current_word );
 
-                                        if ( current_word == '変換' ){
-                                                let colorStr = "white";
-                                                if ( previous_word == '青' ){
-                                                        colorStr = "blue";
-                                                } else if ( previous_word == '緑' ){
-                                                        colorStr = "green";
-                                                }
-                                                $('#RESULT_AREA').css('background-color', colorStr );
-                                        } else if ( current_word == 'いつ' ){
-                                                appendResult( 'いつもお世話になっております。〇〇太郎です。' );
-                                        } else if ( current_word == 'よろ' ){
-                                                appendResult( 'よろしくお願いいたします。' );
+                                if ( current_word == '変換' ){
+                                        let colorStr = "white";
+                                        if ( previous_word == '青' ){
+                                                colorStr = "blue";
+                                        } else if ( previous_word == '緑' ){
+                                                colorStr = "green";
                                         }
-
-                                        previous_word = current_word;
-                                } else {
-                                        let possiblity = [].slice.call( event.results[event.results.length-1] ).map( 
-                                                        function( result, ib ) { return result.transcript; } 
-                                                ).join('\n\n');
-                                        showProcess( possiblity );
+                                        $('#RESULT_AREA').css('background-color', colorStr );
+                                } else if ( current_word == 'いつ' ){
+                                        appendResult( 'いつもお世話になっております。〇〇太郎です。' );
+                                } else if ( current_word == 'よろ' ){
+                                        appendResult( 'よろしくお願いいたします。' );
                                 }
-                        //}
+
+                                previous_word = current_word;
+                        } else {
+                                let possiblity = [].slice.call( event.results[ last_idx ] ).map( 
+                                                function( result, ib ) { return result.transcript; } 
+                                        ).join('\n\n');
+                                showProcess( possiblity );
+                        }
                 });
 
                 $("#START_BTN").on( 'click', function() {

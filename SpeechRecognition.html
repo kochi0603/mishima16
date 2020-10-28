@@ -47,7 +47,9 @@
                                 return;
                         }
                         let last_idx = event.results.length - 1;
+
                         if( event.results[ last_idx ].isFinal ) {
+                                // 変換が終わった場合の処理
                                 setStatus( "認識結果[" + last_idx + "]");
                                 current_word = event.results[ last_idx ][0].transcript;
                                 appendResult( current_word );
@@ -68,8 +70,9 @@
 
                                 previous_word = current_word;
                         } else {
+                                // 変換途中の入力情報
                                 let possiblity = [].slice.call( event.results[ last_idx ] ).map( 
-                                                function( result, ib ) { return result.transcript; } 
+                                                function( result ) { return result.transcript; } 
                                         ).join('\n\n');
                                 showProcess( possiblity );
                         }

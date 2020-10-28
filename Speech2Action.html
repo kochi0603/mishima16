@@ -8,15 +8,15 @@
 <script type="text/javascript">
 <!--
 	$(document).ready(function(){
-		  function setStatus(str) {
-			 $("#STATUS_LABEL").val( str );
-		  };
-		  function showProcess(str) {
-			 $("#LOG_AREA").val( str );
-		  };
-		  function appendResult(str) {
-			 $("#RESULT_AREA").val( $("#RESULT_AREA").val() + "\n" + str );
-		  };
+		function setStatus(str) {
+			$("#STATUS_LABEL").val( str );
+		};
+		function showProcess(str) {
+			$("#LOG_AREA").val( str );
+		};
+		function appendResult(str) {
+			$("#RESULT_AREA").val( $("#RESULT_AREA").val() + "\n" + str );
+		};
 
 		// Chrome と Firefox 両方に対応するための書き方
 		const SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
@@ -52,13 +52,16 @@
 			if( event.results[ last_idx ].isFinal ) {
 				// 変換が終わった場合の処理
 				setStatus( "認識結果[" + last_idx + "]");
-				current_word = event.results[ last_idx ][0].transcript;
+				current_word = event.results[ last_idx ][0].transcript.trim();
 				appendResult( current_word );
 				showProcess( "" );
 
 				console.log('version: ' + Module.version());
 				let mol0 = Module.get_mol( "CC(=O)Oc1ccccc1C(=O)O" );
 				console.log(mol0);
+				let svg = mol0.get_svg();
+				let canvas = document.getElementById("MOL_CANVAS");
+				mol0.draw_to_canvas(canvas, -1, -1);
 
 				if ( current_word == '変換' ){
 					let colorStr = "white";
@@ -71,8 +74,6 @@
 						let mol0 = Module.get_mol( "CC(=O)Oc1ccccc1C(=O)O" );
 						console.log(mol0);
 						let mol = Module.get_mol( previous_word );
-						let svg = mol.get_svg();
-						let canvas = document.getElementById("MOL_CANVAS");
 						mol.draw_to_canvas(canvas, -1, -1);
 					}
 					$('#RESULT_AREA').css('background-color', colorStr );
@@ -101,7 +102,7 @@
 </script>
 </head>
 <body>
-	<font size="2">音声認識サンプル( Speech Recognition API )</font><br>
+	<font size="2">Speech2Action 音声認識サンプル( Speech Recognition API )</font><br>
 	<button id="START_BTN">start</button>
 	<button id="STOP_BTN">stop</button>
 	<input type="text" id="STATUS_LABEL" readonly="readonly" value="未実行"/>

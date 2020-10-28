@@ -6,83 +6,83 @@
 <script type="text/javascript" src="static/jquery-3.5.1.js"></script>
 <script type="text/javascript">
 <!--
-        $(document).ready(function(){
-                function setStatus(str) {
-                        $("#STATUS_LABEL").val( str );
-                };
-                function showProcess(str) {
-                        $("#LOG_AREA").val( str );
-                };
-                function appendResult(str) {
-                        $("#RESULT_AREA").val( $("#RESULT_AREA").val() + "\n" + str );
-                };
+	$(document).ready(function(){
+		function setStatus(str) {
+			$("#STATUS_LABEL").val( str );
+		};
+		function showProcess(str) {
+			$("#LOG_AREA").val( str );
+		};
+		function appendResult(str) {
+			$("#RESULT_AREA").val( $("#RESULT_AREA").val() + "\n" + str );
+		};
 
-                // Chrome と Firefox 両方に対応するための書き方
-                const SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
-                const rec = new SpeechRecognition();
+		// Chrome と Firefox 両方に対応するための書き方
+		const SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
+		const rec = new SpeechRecognition();
 
-                // 継続して音声認識を行う
-                rec.continuous = true;
-                // 変換途中の結果を受け取りたいときtrueにする。変換途中の時は、isFinalはfalseとなっている
-                rec.interimResults = true;
-                // 複数の言語に変換可能
-                rec.lang = "ja-JP" // "en-US"
+		// 継続して音声認識を行う
+		rec.continuous = true;
+		// 変換途中の結果を受け取りたいときtrueにする。変換途中の時は、isFinalはfalseとなっている
+		rec.interimResults = true;
+		// 複数の言語に変換可能
+		rec.lang = "ja-JP" // "en-US"
 
-                rec.addEventListener('start', function() {
-                        	setStatus("開始");
-                });
-                rec.addEventListener('end', function() {
-                        setStatus("終了");
-                });
-                rec.addEventListener('audiostart', function() {
-                        setStatus("準備OK");
-                });
+		rec.addEventListener('start', function() {
+			setStatus("開始");
+		});
+		rec.addEventListener('end', function() {
+			setStatus("終了");
+		});
+		rec.addEventListener('audiostart', function() {
+			setStatus("準備OK");
+		});
 
-                // ここがメインの処理
-                rec.addEventListener('result', function(event) {
-                        if( ! event.results.length ) {
-                                return;
-                        }
-                        let last_idx = event.results.length - 1;
+		// ここがメインの処理
+		rec.addEventListener('result', function(event) {
+			if( ! event.results.length ) {
+				return;
+			}
+			let last_idx = event.results.length - 1;
 
-                        if( event.results[ last_idx ].isFinal ) {
-                                // 変換が終わった場合の処理
-                                setStatus( "認識結果[" + last_idx + "]");
-                                current_word = event.results[ last_idx ][0].transcript;
-                                appendResult( current_word );
-                                showProcess( "" );
+			if( event.results[ last_idx ].isFinal ) {
+				// 変換が終わった場合の処理
+				setStatus( "認識結果[" + last_idx + "]");
+				current_word = event.results[ last_idx ][0].transcript;
+				appendResult( current_word );
+				showProcess( "" );
 
-                        } else {
-                                // 変換途中の入力情報
-                                let possiblity = [].slice.call( event.results[ last_idx ] ).map( 
-                                                function( result ) { return result.transcript; } 
-                                        ).join('\n\n');
-                                showProcess( possiblity );
-                        }
-                });
+			} else {
+				// 変換途中の入力情報
+				let possiblity = [].slice.call( event.results[ last_idx ] ).map( 
+							function( result ) { return result.transcript; } 
+						).join('\n\n');
+				showProcess( possiblity );
+			}
+		});
 
-                $("#START_BTN").on( 'click', function() {
-                        rec.start();
-                } );
-                $("#STOP_BTN").on( 'click', function() {
-                        rec.stop();
-                } );
-        });
+		$("#START_BTN").on( 'click', function() {
+				rec.start();
+		} );
+		$("#STOP_BTN").on( 'click', function() {
+				rec.stop();
+		} );
+	});
 //-->
 </script>
 </head>
 <body>
-    <font size="2">音声認識サンプル( Speech Recognition API )</font><br>
-    <button id="START_BTN">start</button>
-    <button id="STOP_BTN">stop</button>
-    <input type="text" id="STATUS_LABEL" readonly="readonly" value="未実行"/>
-    <br>
-        <font size="2">途中経過</font>
-    <br>
-        <textarea id="LOG_AREA" rows=4 cols=80></textarea>
-    <br>
-        <font size="2">認識結果</font>
-    <br>
-        <textarea id="RESULT_AREA" rows=16 cols=80></textarea>
+	<font size="2">音声認識サンプル( Speech Recognition API )</font><br>
+	<button id="START_BTN">start</button>
+	<button id="STOP_BTN">stop</button>
+	<input type="text" id="STATUS_LABEL" readonly="readonly" value="未実行"/>
+	<br>
+		<font size="2">途中経過</font>
+	<br>
+		<textarea id="LOG_AREA" rows=4 cols=80></textarea>
+	<br>
+		<font size="2">認識結果</font>
+	<br>
+		<textarea id="RESULT_AREA" rows=16 cols=80></textarea>
 </body>
 </html>

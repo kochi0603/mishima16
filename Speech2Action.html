@@ -7,137 +7,114 @@
 <script type="text/javascript" src="static/RDKit_minimal.js"></script>
 <script type="text/javascript">
 <!--
-       $(document).ready(function(){
-              function setStatus(str) {
-                     $("#STATUS_LABEL").val( str );
-              };
-              function showProcess(str) {
-                     $("#LOG_AREA").val( str );
-              };
-              function appendResult(str) {
-                     $("#RESULT_AREA").val( $("#RESULT_AREA").val() + "\n" + str );
-              };
+	$(document).ready(function(){
+		  function setStatus(str) {
+			 $("#STATUS_LABEL").val( str );
+		  };
+		  function showProcess(str) {
+			 $("#LOG_AREA").val( str );
+		  };
+		  function appendResult(str) {
+			 $("#RESULT_AREA").val( $("#RESULT_AREA").val() + "\n" + str );
+		  };
 
-              // Chrome と Firefox 両方に対応するための書き方
-              const SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
-              const rec = new SpeechRecognition();
+		// Chrome と Firefox 両方に対応するための書き方
+		const SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
+		const rec = new SpeechRecognition();
 
-              // 継続して音声認識を行う
-              rec.continuous = true;
-              // 変換途中の結果を受け取りたいときtrueにする。変換途中の時は、isFinalはfalseとなっている
-              rec.interimResults = true;
-              // 複数の言語に変換可能
-              rec.lang = "ja-JP" // "en-US"
+		// 継続して音声認識を行う
+		rec.continuous = true;
+		// 変換途中の結果を受け取りたいときtrueにする。変換途中の時は、isFinalはfalseとなっている
+		rec.interimResults = true;
+		// 複数の言語に変換可能
+		rec.lang = "ja-JP" // "en-US"
 
-              let previous_word = "";
-              let current_word = "";
+		let previous_word = "";
+		let current_word = "";
 
-              rec.addEventListener('start', function() {
-                     setStatus("開始");
-              });
-              rec.addEventListener('end', function() {
-                     setStatus("終了");
-              });
-              rec.addEventListener('audiostart', function() {
-                     setStatus("準備OK");
-              });
+		rec.addEventListener('start', function() {
+			setStatus("開始");
+		});
+		rec.addEventListener('end', function() {
+			setStatus("終了");
+		});
+		rec.addEventListener('audiostart', function() {
+			setStatus("準備OK");
+		});
 
-              // ここがメインの処理
-              rec.addEventListener('result', function(event) {
-                     if( ! event.results.length ) {
-                         return;
-                     }
-                        let last_idx = event.results.length - 1;
+		// ここがメインの処理
+		rec.addEventListener('result', function(event) {
+			if( ! event.results.length ) {
+				return;
+			}
+			let last_idx = event.results.length - 1;
 
-                        if( event.results[ last_idx ].isFinal ) {
-                                   // 変換が終わった場合の処理
-                                   setStatus( "認識結果[" + last_idx + "]");
-                                   current_word = event.results[ last_idx ][0].transcript;
-                                   appendResult( current_word );
-                                   showProcess( "" );
+			if( event.results[ last_idx ].isFinal ) {
+				// 変換が終わった場合の処理
+				setStatus( "認識結果[" + last_idx + "]");
+				current_word = event.results[ last_idx ][0].transcript;
+				appendResult( current_word );
+				showProcess( "" );
 
-                                   console.log('version: ' + Module.version());
-                                   let mol0 = Module.get_mol( "CC(=O)Oc1ccccc1C(=O)O" );
-                                   console.log(mol0);
+				console.log('version: ' + Module.version());
+				let mol0 = Module.get_mol( "CC(=O)Oc1ccccc1C(=O)O" );
+				console.log(mol0);
 
-                                if ( current_word == '変換' ){
-                                        let colorStr = "white";
-                                        if ( previous_word == 'blue' ){
-                                                colorStr = "blue";
-                                        } else if ( previous_word == 'green' ){
-                                                colorStr = "green";
-                                        } else {
-                                                console.log('version: ' + Module.version());
-                                                let mol0 = Module.get_mol( "CC(=O)Oc1ccccc1C(=O)O" );
-                                                console.log(mol0);
-                                                let mol = Module.get_mol( previous_word );
-                                                let svg = mol.get_svg();
-                                                let canvas = document.getElementById("MOL_CANVAS");
-                                                mol.draw_to_canvas(canvas, -1, -1);
-                                        }
-                                        $('#RESULT_AREA').css('background-color', colorStr );
-                                } else if ( current_word == 'when' ){
-                                        appendResult( 'いつもお世話になっております。〇〇太郎です。' );
-                                }
+				if ( current_word == '変換' ){
+					let colorStr = "white";
+					if ( previous_word == 'blue' ){
+							colorStr = "blue";
+					} else if ( previous_word == 'green' ){
+							colorStr = "green";
+					} else {
+						console.log('version: ' + Module.version());
+						let mol0 = Module.get_mol( "CC(=O)Oc1ccccc1C(=O)O" );
+						console.log(mol0);
+						let mol = Module.get_mol( previous_word );
+						let svg = mol.get_svg();
+						let canvas = document.getElementById("MOL_CANVAS");
+						mol.draw_to_canvas(canvas, -1, -1);
+					}
+					$('#RESULT_AREA').css('background-color', colorStr );
+				} else if ( current_word == 'when' ){
+					appendResult( 'いつもお世話になっております。〇〇太郎です。' );
+				}
 
-                                previous_word = current_word;
-                        } else {
-                                // 変換途中の入力情報
-                                let possiblity = [].slice.call( event.results[ last_idx ] ).map( 
-                                                function( result ) { return result.transcript; } 
-                                        ).join('\n\n');
-                                showProcess( possiblity );
-                        }
-                });
+				previous_word = current_word;
+			} else {
+				// 変換途中の入力情報
+				let possiblity = [].slice.call( event.results[ last_idx ] ).map( 
+								function( result ) { return result.transcript; } 
+						).join('\n\n');
+				showProcess( possiblity );
+			}
+		});
 
-                $("#START_BTN").on( 'click', function() {
-                        rec.start();
-                } );
-                $("#STOP_BTN").on( 'click', function() {
-                        rec.stop();
-                } );
-        });
-//        var smi = document.getElementById('smiles_input').value;
-
-//         var Module = {
-//                 onRuntimeInitialized: function () {
-//                         console.log('version: ' + Module.version());
-//                         var m1 = Module.get_mol("c1ccccc1O");
-//                         console.log('smiles: ' + m1.get_smiles());
-//                         m1.delete();
-//                         callback("CC(=O)Oc1ccccc1C(=O)O");
-//                 }
-//         };
-//         function draw(mol) {
-//                 var details = {};
-//                 draw_with_highlights(mol, details);
-//                 return;
-//                 var svg = mol.get_svg();
-//                 if (svg == "") return;
-//                 var ob = document.getElementById("drawing");
-//                 ob.outerHTML = "<div id='drawing'>" + svg + "</div>";
-//                 var canvas = document.getElementById("rdkit-canvas");
-//                 mol.draw_to_canvas(canvas, -1, -1);
-//         }
-
-        //-->
+	$("#START_BTN").on( 'click', function() {
+			rec.start();
+	} );
+	$("#STOP_BTN").on( 'click', function() {
+			rec.stop();
+	} );
+});
+//-->
 </script>
 </head>
 <body>
-    <font size="2">音声認識サンプル( Speech Recognition API )</font><br>
-    <button id="START_BTN">start</button>
-    <button id="STOP_BTN">stop</button>
-    <input type="text" id="STATUS_LABEL" readonly="readonly" value="未実行"/>
-    <br>
-        <font size="2">途中経過</font>
-    <br>
-        <textarea id="LOG_AREA" rows=4 cols=80></textarea>
-    <br>
-        <font size="2">認識結果</font>
-    <br>
-        <textarea id="RESULT_AREA" rows=16 cols=80></textarea>
-    <br>
-    <div id="MOL_CANVAS">
-    </div>
+	<font size="2">音声認識サンプル( Speech Recognition API )</font><br>
+	<button id="START_BTN">start</button>
+	<button id="STOP_BTN">stop</button>
+	<input type="text" id="STATUS_LABEL" readonly="readonly" value="未実行"/>
+	<br>
+		<font size="2">途中経過</font>
+	<br>
+		<textarea id="LOG_AREA" rows=4 cols=80></textarea>
+	<br>
+		<font size="2">認識結果</font>
+	<br>
+		<textarea id="RESULT_AREA" rows=16 cols=80></textarea>
+	<br>
+	<div id="MOL_CANVAS">
+	</div>
 </body>
 </html>

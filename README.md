@@ -14,12 +14,11 @@
 # ためしたこと
 + 話した内容を文字列に変換できるか？
   + (結果)長くてもちゃんとした文章なら、ちゃんと変換してくれました。文脈から正しい単語に変換するようです。 
+  + https://kochi0603.github.io/mishima16/Speech2Text.html
+
 + 何かの決め言葉をトリガーにして、アクションさせられる？
   + (結果)実在しない言葉はうまく変換できないので、決め言葉しだいでうまくいきそうです。
-
----
-# 実装サンプルページ
-https://kochi0603.github.io/mishima16/SpeechRecognition.html
+  + https://kochi0603.github.io/mishima16/Speech2Action.html
 
 ---
 ## 参考にしたサイト

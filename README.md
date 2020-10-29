@@ -6,9 +6,8 @@
 
 ---
 # 環境
-* 気軽に音声認識を試す環境
-  * Browserで試したい。アプリは使わない。
-    * Speech Recognition API。ただし、Chromeだけ(他のブラウザは不完全)
+* ブラウザで試しました。
+  * Speech Recognition API。ただし、Chromeだけ(他のブラウザは不完全)
     * オンラインじゃないと動作しない ⇒ サーバに処理を丸投げしてるようです。
 
 ---
@@ -21,9 +20,9 @@
   + (結果)実在しない言葉はうまく変換できないので、決め言葉しだいでうまくいきそうです。
   + https://kochi0603.github.io/mishima16/Speech2Action.html
 
-+ 構造式を表示させられるか？
-  + (結果)実在しない言葉はうまく変換できないので、決め言葉しだいでうまくいきそうです。
-  + https://kochi0603.github.io/mishima16/Speech2Action.html
++ おまけ
+  + (結果)呪文を唱える
+  + https://kochi0603.github.io/mishima16/Speech2Mol.html
 
 ---
 ## 参考にしたサイト

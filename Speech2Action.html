@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <title>Speach2Text</title>
 <script type="text/javascript" src="static/jquery-3.5.1.js"></script>
-<script type="text/javascript" src="static/RDKit_minimal.js"></script>
 <script type="text/javascript">
 <!--
 	$(document).ready(function(){
@@ -27,10 +26,7 @@
 		// 変換途中の結果を受け取りたいときtrueにする。変換途中の時は、isFinalはfalseとなっている
 		rec.interimResults = true;
 		// 複数の言語に変換可能
-		rec.lang = "ja-JP" // "en-US"
-
-		let previous_word = "";
-		let current_word = "";
+		rec.lang = "en-US" // "ja-JP"
 
 		rec.addEventListener('start', function() {
 			setStatus("開始");
@@ -41,6 +37,9 @@
 		rec.addEventListener('audiostart', function() {
 			setStatus("準備OK");
 		});
+
+		let previous_word = "";
+		let current_word = "";
 
 		// ここがメインの処理
 		rec.addEventListener('result', function(event) {
@@ -56,31 +55,14 @@
 				appendResult( current_word );
 				showProcess( "" );
 
-				console.log('version: ' + Module.version());
-				let mol0 = Module.get_mol( "CC(=O)Oc1ccccc1C(=O)O" );
-				//console.log(mol0);
-				//let svg = mol0.get_svg();
-				//$("#DRAWING").val(svg);
-				let canvas = document.getElementById("MOL_CANVAS");
-				mol0.draw_to_canvas(canvas, -1, -1);
-
-				if ( current_word == '変換' ){
-					let colorStr = "white";
-					if ( previous_word == 'blue' ){
-							colorStr = "blue";
-					} else if ( previous_word == 'green' ){
-							colorStr = "green";
-					} else {
-						console.log('version: ' + Module.version());
-						let mol0 = Module.get_mol( "CC(=O)Oc1ccccc1C(=O)O" );
-						console.log(mol0);
-						let mol = Module.get_mol( previous_word );
-						mol.draw_to_canvas(canvas, -1, -1);
-					}
-					$('#RESULT_AREA').css('background-color', colorStr );
-				} else if ( current_word == 'when' ){
-					appendResult( 'いつもお世話になっております。〇〇太郎です。' );
+				let base_url = "https://www.google.com/search?hl=ja&q=" + current_word;
+				if ( previous_word == 'pubmed' ){
+					base_url = "https://pubmed.ncbi.nlm.nih.gov/?term=" + current_word;
+				} else if ( previous_word == 'scholar' ){
+					base_url = "https://scholar.google.com/scholar?hl=ja&q=" + current_word;
 				}
+				$("#LINK_DIV").html(base_url);
+				$("#LINK_DIV").attr('href', base_url);
 
 				previous_word = current_word;
 			} else {
@@ -110,14 +92,14 @@
 	<br>
 		<font size="2">途中経過</font>
 	<br>
+	pubmed もしくは、scholar と話した後、一呼吸おいてから検索ワードを話してください。
+	<br>
 		<textarea id="LOG_AREA" rows=4 cols=80></textarea>
 	<br>
 		<font size="2">認識結果</font>
 	<br>
 		<textarea id="RESULT_AREA" rows=16 cols=80></textarea>
 	<br>
-	<canvas id="MOL_CANVAS" width="320" height="240" style="border:1px solid #000000;"></canvas>
-	<!--<div id="DRAWING"></div>-->
-	</div>
+	<a id="LINK_DIV"></a>
 </body>
 </html>

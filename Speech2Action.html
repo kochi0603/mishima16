@@ -58,7 +58,7 @@
 				let base_url = "https://www.google.com/search?hl=ja&q=" + current_word;
 				if ( previous_word == 'pubmed' ){
 					base_url = "https://pubmed.ncbi.nlm.nih.gov/?term=" + current_word;
-				} else if ( previous_word == 'scholar' ){
+				} else if ( previous_word == 'Google Scholar' ){
 					base_url = "https://scholar.google.com/scholar?hl=ja&q=" + current_word;
 				}
 				$("#LINK_DIV").html(base_url);
@@ -92,7 +92,7 @@
 	<br>
 		<font size="2">途中経過</font>
 	<br>
-	pubmed もしくは、scholar と話した後、一呼吸おいてから検索ワードを話してください。
+	pubmed もしくは、Google Scholar と話した後、一呼吸おいてから検索ワードを話してください。
 	<br>
 		<textarea id="LOG_AREA" rows=4 cols=80></textarea>
 	<br>

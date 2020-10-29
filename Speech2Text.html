@@ -39,6 +39,8 @@
 		});
 
 		// ここがメインの処理
+		// 音声を認識する都度、resultというイベントが発生し、認識結果がevent.resultsに蓄積される
+		// event.resultsはリストとなっていて、文章が句切れるごとに、リストに追記されていく
 		rec.addEventListener('result', function(event) {
 			if( ! event.results.length ) {
 				return;

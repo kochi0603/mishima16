@@ -1,7 +1,8 @@
 ##### [Mishima.syk #16](https://connpass.com/event/164605/)　2020/11/28
 # 「気軽に音声認識　@tkochi0603」
 * 在宅勤務でWeb会議が多くなり、ヘッドセットを付ける機会が増えました。
-* 音声認識を使って業務効率化できませんかね？
+* 音声認識を使って遊んでみました。
+  * 手を使えない環境での入力手段として使いものなるといいですが。。
 
 ---
 # 環境
@@ -17,6 +18,10 @@
   + https://kochi0603.github.io/mishima16/Speech2Text.html
 
 + 何かの決め言葉をトリガーにして、アクションさせられる？
+  + (結果)実在しない言葉はうまく変換できないので、決め言葉しだいでうまくいきそうです。
+  + https://kochi0603.github.io/mishima16/Speech2Action.html
+
++ 構造式を表示させられるか？
   + (結果)実在しない言葉はうまく変換できないので、決め言葉しだいでうまくいきそうです。
   + https://kochi0603.github.io/mishima16/Speech2Action.html
 

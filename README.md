@@ -11,7 +11,7 @@
     * オンラインじゃないと動作しない ⇒ サーバに処理を丸投げしてるようです。
 
 ---
-# ためしたこと
+# 試したこと
 + 話した内容を文字列に変換できるか？
   + (結果)長くてもちゃんとした文章なら、ちゃんと変換してくれました。文脈から正しい単語に変換するようです。 
   + https://kochi0603.github.io/mishima16/Speech2Text.html
@@ -21,7 +21,7 @@
   + https://kochi0603.github.io/mishima16/Speech2Action.html
 
 + おまけ
-  + (結果)呪文を唱える
+  + (結果)呪文を唱えるみたいになっちゃう
   + https://kochi0603.github.io/mishima16/Speech2Mol.html
 
 ---

@@ -16,13 +16,6 @@
 		$("#RESULT_AREA").val( $("#RESULT_AREA").val() + "\n" + str );
 	};
 
-	$("#START_BTN").on( 'click', function() {
-		rec.start();
-	});
-	$("#STOP_BTN").on( 'click', function() {
-		rec.stop();
-	});
-
 	$(document).ready(function(){
 		// Chrome と Firefox 両方に対応するための書き方
 		const SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
@@ -46,7 +39,8 @@
 		});
 		rec.addEventListener('error', function(event) {
 			appendResult("ERROR" + event.error );
-			appendResult("ERROR" + event.error );
+			appendResult("---------------------" );
+			appendResult("ERROR" + event.message );
 		});
 
 		// ここがメインの処理
@@ -71,6 +65,13 @@
 						).join('\n\n');
 				showProcess( possiblity );
 			}
+		});
+
+		$("#START_BTN").on( 'click', function() {
+			rec.start();
+		});
+		$("#STOP_BTN").on( 'click', function() {
+			rec.stop();
 		});
 	});
 //-->

@@ -58,12 +58,12 @@
 				let vals = sentence.match( /(.+)を(.+)で/ );
 				if ( vals != null ){
 					let url = "";
-					if ( vals[1].search( /Google/i ) != -1 ){
-						let url = "https://www.google.com/search?hl=ja&q=" + vals[2];
-					} else if ( vals[1].search( /Google Scholar/i ) != -1 ){
-						let url = "https://scholar.google.com/scholar?hl=ja&q=" + vals[2];
-					} else if ( vals[1].search( /東京化成/i ) != -1 ){
-						let url = "https://www.tcichemicals.com/JP/ja/search/?text=" + vals[2];
+					if ( vals[2].search( /Google/i ) != -1 ){
+						url = "https://www.google.com/search?hl=ja&q=" + vals[1];
+					} else if ( vals[2].search( /Google Scholar/i ) != -1 ){
+						url = "https://scholar.google.com/scholar?hl=ja&q=" + vals[1];
+					} else if ( vals[2].search( /東京化成/i ) != -1 ){
+						url = "https://www.tcichemicals.com/JP/ja/search/?text=" + vals[1];
 					}
 					$("#LINK_DIV").html(url);
 					$("#LINK_DIV").attr('href', url);

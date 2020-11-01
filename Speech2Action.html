@@ -59,7 +59,7 @@
 				let base_url = "";
 				let vals = sentence.match( /(.+)を(.+)で/ );
 				if ( vals != null ){
-					$("#LINK_DIV").html( "[" + vals[0] + "][" + vals[1] );
+					$("#LINK_DIV").html( "[" + vals[0] + "][" + vals[1] + "][" + vals[2] );
 					//base_url = "https://pubmed.ncbi.nlm.nih.gov/?term=" + current_word;
 				}
 				//$("#LINK_DIV").html(base_url);
@@ -98,7 +98,7 @@
 	<br>
 		<font size="2">認識結果</font>
 	<br>
-		<textarea id="RESULT_AREA" rows=16 cols=80></textarea>
+		<textarea id="RESULT_AREA" rows=10 cols=80></textarea>
 	<br>
 	<a id="LINK_DIV" target="_blank"></a>
 </body>

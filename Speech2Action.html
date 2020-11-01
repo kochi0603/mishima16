@@ -89,7 +89,7 @@
 </script>
 </head>
 <body>
-	<font size="2">Speech2Action 音声認識サンプル( Speech Recognition API )</font><br>
+	<font size="2">Speech2Action 音声認識サンプル</font><br>
 	<button id="START_BTN">start</button>
 	<button id="STOP_BTN">stop</button>
 	<input type="text" id="STATUS_LABEL" readonly="readonly" value="未実行"/>
@@ -98,17 +98,17 @@
 		<li>「○○を◆◆で探す」と話してみてください。</li>
 		<ul>
 			<li>例)「official髭男dismをgoogleでさがす」</li>
+			<li>例)「lung cancerをgoogle scholarでさがす」</li>
 			<li>例)「酢酸を東京化成でさがす」</li>
 		</ul>
 	</ul>
+	<font size="2">途中経過</font>
 	<br>
-		<font size="2">途中経過</font>
+	<textarea id="PROCESS_AREA" rows=2 cols=80></textarea>
 	<br>
-		<textarea id="PROCESS_AREA" rows=2 cols=80></textarea>
+	<font size="2">認識結果</font>
 	<br>
-		<font size="2">認識結果</font>
-	<br>
-		<textarea id="RESULT_AREA" rows=5 cols=80></textarea>
+	<textarea id="RESULT_AREA" rows=5 cols=80></textarea>
 	<br>
 	<a id="LINK_DIV" target="_blank"></a>
 </body>

@@ -57,7 +57,7 @@
 
 				//let base_url = "https://www.google.com/search?hl=ja&q=" + current_word;
 				let base_url = "";
-				if ( sentence.test( /Google Scholar/i ) ){
+				if ( sentence.search( /Google Scholar/i ) != -1 ){
 					let vals = sentence.match( /(.+)を/ );
 					$("#LINK_DIV").html(vals[0]);
 					//base_url = "https://pubmed.ncbi.nlm.nih.gov/?term=" + current_word;

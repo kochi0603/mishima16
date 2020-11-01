@@ -54,19 +54,15 @@
 				// 変換が終わった場合の処理
 				setStatus( "認識結果[" + last_idx + "]");
 				let sentence = event.results[ last_idx ][0].transcript.trim();
-				console.log( event.results[ last_idx ][0] );
+				// console.log( event.results[ last_idx ][0] );
 				appendResult( sentence );
 				setProcess( "" );
 
 				//let mol = Module.get_mol( "CC(=O)Oc1ccccc1C(=O)O" );
 				let mol = Module.get_mol( sentence );
-				console.log(mol);
-				//let svg = mol0.get_svg();
-				//$("#DRAWING").val(svg);
-				//let canvas = document.getElementById("MOL_CANVAS");
+				// console.log( mol );
 				let canvas = $("#MOL_CANVAS").get(0);
 				mol.draw_to_canvas(canvas, -1, -1);
-				//appendResult( 'いつもお世話になっております。〇〇太郎です。' );
 
 			} else {
 				// 変換途中の入力情報
@@ -102,7 +98,6 @@
 	<textarea id="RESULT_AREA" rows=5 cols=80></textarea>
 	<br>
 	<canvas id="MOL_CANVAS" width="320" height="240" style="border:1px solid #000000;"></canvas>
-	<!--<div id="DRAWING"></div>-->
 	</div>
 </body>
 </html>

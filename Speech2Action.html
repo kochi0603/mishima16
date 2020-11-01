@@ -60,13 +60,11 @@
 					let url = "";
 					if ( vals[1].search( /Google/i ) != -1 ){
 						let url = "https://www.google.com/search?hl=ja&q=" + vals[2];
-					} elseif (vals[1].search( /Google Scholar/i ) != -1 ){
+					} else if ( vals[1].search( /Google Scholar/i ) != -1 ){
 						let url = "https://scholar.google.com/scholar?hl=ja&q=" + vals[2];
-					} elseif (vals[1].search( /東京化成/i ) != -1 ){
+					} else if ( vals[1].search( /東京化成/i ) != -1 ){
 						let url = "https://www.tcichemicals.com/JP/ja/search/?text=" + vals[2];
 					}
-					//$("#LINK_DIV").html( "[" + vals[1] + "][" + vals[2] + "]" );
-					//$("#LINK_DIV").html( "[" + vals[1] + "][" + vals[2] + "]" );
 					$("#LINK_DIV").html(url);
 					$("#LINK_DIV").attr('href', url);
 				}

@@ -44,6 +44,10 @@
 		rec.addEventListener('audiostart', function() {
 			setStatus("準備OK");
 		});
+		rec.addEventListener('error', function(event) {
+			appendResult("ERROR" + event.error );
+			appendResult("ERROR" + event.error );
+		});
 
 		// ここがメインの処理
 		// 音声を認識する都度、resultというイベントが発生し、認識結果がevent.resultsに蓄積される

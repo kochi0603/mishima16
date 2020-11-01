@@ -6,17 +6,24 @@
 <script type="text/javascript" src="static/jquery-3.5.1.js"></script>
 <script type="text/javascript">
 <!--
-	$(document).ready(function(){
-		function setStatus(str) {
-			$("#STATUS_LABEL").val( str );
-		};
-		function showProcess(str) {
-			$("#LOG_AREA").val( str );
-		};
-		function appendResult(str) {
-			$("#RESULT_AREA").val( $("#RESULT_AREA").val() + "\n" + str );
-		};
+	function setStatus(str) {
+		$("#STATUS_LABEL").val( str );
+	};
+	function showProcess(str) {
+		$("#LOG_AREA").val( str );
+	};
+	function appendResult(str) {
+		$("#RESULT_AREA").val( $("#RESULT_AREA").val() + "\n" + str );
+	};
 
+	$("#START_BTN").on( 'click', function() {
+		rec.start();
+	});
+	$("#STOP_BTN").on( 'click', function() {
+		rec.stop();
+	});
+
+	$(document).ready(function(){
 		// Chrome と Firefox 両方に対応するための書き方
 		const SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
 		const rec = new SpeechRecognition();
@@ -60,13 +67,6 @@
 						).join('\n\n');
 				showProcess( possiblity );
 			}
-		});
-
-		$("#START_BTN").on( 'click', function() {
-			rec.start();
-		});
-		$("#STOP_BTN").on( 'click', function() {
-			rec.stop();
 		});
 	});
 //-->

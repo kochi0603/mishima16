@@ -37,6 +37,7 @@
 		});
 		rec.addEventListener('audiostart', function() {
 			setStatus("準備OK");
+			appendResult( "RDKit version:" + Module.version());
 		});
 		rec.addEventListener('error', function(event) {
 			appendResult("エラー[" + event.error + "]" + event.message );
@@ -53,13 +54,13 @@
 				// 変換が終わった場合の処理
 				setStatus( "認識結果[" + last_idx + "]");
 				let sentence = event.results[ last_idx ][0].transcript.trim();
+				console.log( event.results[ last_idx ][0] );
 				appendResult( sentence );
 				setProcess( "" );
 
-				appendResult( "version:" + Module.version());
 				//let mol = Module.get_mol( "CC(=O)Oc1ccccc1C(=O)O" );
 				let mol = Module.get_mol( sentence );
-				//console.log(mol0);
+				console.log(mol);
 				//let svg = mol0.get_svg();
 				//$("#DRAWING").val(svg);
 				let canvas = document.getElementById("MOL_CANVAS");
@@ -86,7 +87,7 @@
 </script>
 </head>
 <body>
-	<font size="2">Speech2Action 音声認識サンプル( Speech Recognition API )</font><br>
+	<font size="2">Speech2Mol 音声認識サンプル</font><br>
 	<button id="START_BTN">start</button>
 	<button id="STOP_BTN">stop</button>
 	<input type="text" id="STATUS_LABEL" readonly="readonly" value="未実行"/>

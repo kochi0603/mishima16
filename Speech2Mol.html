@@ -59,6 +59,7 @@
 				setProcess( "" );
 
 				//let mol = Module.get_mol( "CC(=O)Oc1ccccc1C(=O)O" );
+				sentence = sentence.replace( / /g, '' );
 				let mol = Module.get_mol( sentence );
 				// console.log( mol );
 				let canvas = $("#MOL_CANVAS").get(0);

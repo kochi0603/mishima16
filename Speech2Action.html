@@ -6,17 +6,17 @@
 <script type="text/javascript" src="static/jquery-3.5.1.js"></script>
 <script type="text/javascript">
 <!--
-	$(document).ready(function(){
-		function setStatus(str) {
-			$("#STATUS_LABEL").val( str );
-		};
-		function showProcess(str) {
-			$("#LOG_AREA").val( str );
-		};
-		function appendResult(str) {
-			$("#RESULT_AREA").val( $("#RESULT_AREA").val() + "\n" + str );
-		};
+	function setStatus(str) {
+		$("#STATUS_LABEL").val( str );
+	};
+	function setProcess(str) {
+		$("#PROCESS_AREA").val( str );
+	};
+	function appendResult(str) {
+		$("#RESULT_AREA").val( $("#RESULT_AREA").val() + "\n" + str );
+	};
 
+	$(document).ready(function(){
 		// Chrome と Firefox 両方に対応するための書き方
 		const SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
 		const rec = new SpeechRecognition();
@@ -26,7 +26,7 @@
 		// 変換途中の結果を受け取りたいときtrueにする。変換途中の時は、isFinalはfalseとなっている
 		rec.interimResults = true;
 		// 複数の言語に変換可能
-		rec.lang = "en-US" // "ja-JP"
+		rec.lang = "ja-JP" // "en-US"
 
 		rec.addEventListener('start', function() {
 			setStatus("開始");
@@ -37,9 +37,9 @@
 		rec.addEventListener('audiostart', function() {
 			setStatus("準備OK");
 		});
-
-		let previous_word = "";
-		let current_word = "";
+		rec.addEventListener('error', function(event) {
+			appendResult("エラー[" + event.error + "]" + event.message );
+		});
 
 		// ここがメインの処理
 		rec.addEventListener('result', function(event) {
@@ -51,36 +51,36 @@
 			if( event.results[ last_idx ].isFinal ) {
 				// 変換が終わった場合の処理
 				setStatus( "認識結果[" + last_idx + "]");
-				current_word = event.results[ last_idx ][0].transcript.trim();
-				appendResult( current_word );
-				showProcess( "" );
+				let sentence = event.results[ last_idx ][0].transcript.trim();
+				appendResult( sentence );
+				setProcess( "" );
 
-				let base_url = "https://www.google.com/search?hl=ja&q=" + current_word;
-				if ( previous_word == 'pubmed' ){
-					base_url = "https://pubmed.ncbi.nlm.nih.gov/?term=" + current_word;
-				} else if ( previous_word == 'Google Scholar' ){
-					base_url = "https://scholar.google.com/scholar?hl=ja&q=" + current_word;
+				//let base_url = "https://www.google.com/search?hl=ja&q=" + current_word;
+				let base_url = "";
+				if ( sentence.test( /Google Scholar/i ) ){
+					let vals = sentence.match( /(.+)を/ );
+					$("#LINK_DIV").html(vals[0]);
+					//base_url = "https://pubmed.ncbi.nlm.nih.gov/?term=" + current_word;
 				}
-				$("#LINK_DIV").html(base_url);
-				$("#LINK_DIV").attr('href', base_url);
+				//$("#LINK_DIV").html(base_url);
+				//$("#LINK_DIV").attr('href', base_url);
 
-				previous_word = current_word;
 			} else {
 				// 変換途中の入力情報
 				let possiblity = [].slice.call( event.results[ last_idx ] ).map( 
 								function( result ) { return result.transcript; } 
 						).join('\n\n');
-				showProcess( possiblity );
+				setProcess( possiblity );
 			}
 		});
 
-	$("#START_BTN").on( 'click', function() {
-			rec.start();
-	} );
-	$("#STOP_BTN").on( 'click', function() {
-			rec.stop();
-	} );
-});
+		$("#START_BTN").on( 'click', function() {
+				rec.start();
+		} );
+		$("#STOP_BTN").on( 'click', function() {
+				rec.stop();
+		} );
+	});
 //-->
 </script>
 </head>
@@ -94,7 +94,7 @@
 	<br>
 	pubmed もしくは、Google Scholar と話した後、一呼吸おいてから検索ワードを話してください。
 	<br>
-		<textarea id="LOG_AREA" rows=4 cols=80></textarea>
+		<textarea id="PROCESS_AREA" rows=4 cols=80></textarea>
 	<br>
 		<font size="2">認識結果</font>
 	<br>

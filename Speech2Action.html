@@ -55,15 +55,21 @@
 				appendResult( sentence );
 				setProcess( "" );
 
-				//let base_url = "https://www.google.com/search?hl=ja&q=" + current_word;
-				let base_url = "";
 				let vals = sentence.match( /(.+)を(.+)で/ );
 				if ( vals != null ){
-					$("#LINK_DIV").html( "[" + vals[0] + "][" + vals[1] + "][" + vals[2] );
-					//base_url = "https://pubmed.ncbi.nlm.nih.gov/?term=" + current_word;
+					let url = "";
+					if ( vals[1].search( /Google/i ) != -1 ){
+						let url = "https://www.google.com/search?hl=ja&q=" + vals[2];
+					} elseif (vals[1].search( /Google Scholar/i ) != -1 ){
+						let url = "https://scholar.google.com/scholar?hl=ja&q=" + vals[2];
+					} elseif (vals[1].search( /東京化成/i ) != -1 ){
+						let url = "https://www.tcichemicals.com/JP/ja/search/?text=" + vals[2];
+					}
+					//$("#LINK_DIV").html( "[" + vals[1] + "][" + vals[2] + "]" );
+					//$("#LINK_DIV").html( "[" + vals[1] + "][" + vals[2] + "]" );
+					$("#LINK_DIV").html(url);
+					$("#LINK_DIV").attr('href', url);
 				}
-				//$("#LINK_DIV").html(base_url);
-				//$("#LINK_DIV").attr('href', base_url);
 
 			} else {
 				// 変換途中の入力情報
@@ -92,7 +98,9 @@
 	<br>
 		<font size="2">途中経過</font>
 	<br>
-	pubmed もしくは、Google Scholar と話した後、一呼吸おいてから検索ワードを話してください。
+	「○○を◆◆で探す」と話してみてください。<br>
+	例)「official髭男dismをgoogleでさがす」
+	例)「酢酸を東京化成でさがす」
 	<br>
 		<textarea id="PROCESS_AREA" rows=4 cols=80></textarea>
 	<br>

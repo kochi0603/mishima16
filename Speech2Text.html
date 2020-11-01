@@ -9,8 +9,8 @@
 	function setStatus(str) {
 		$("#STATUS_LABEL").val( str );
 	};
-	function showProcess(str) {
-		$("#LOG_AREA").val( str );
+	function setProcess(str) {
+		$("#PROCESS_AREA").val( str );
 	};
 	function appendResult(str) {
 		$("#RESULT_AREA").val( $("#RESULT_AREA").val() + "\n" + str );
@@ -38,9 +38,7 @@
 			setStatus("準備OK");
 		});
 		rec.addEventListener('error', function(event) {
-			appendResult("ERROR" + event.error );
-			appendResult("---------------------" );
-			appendResult("ERROR" + event.message );
+			appendResult("エラー[" + event.error + "]" + event.message );
 		});
 
 		// ここがメインの処理
@@ -56,14 +54,14 @@
 				// 変換が終わった場合の処理
 				setStatus( "認識結果[" + last_idx + "]");
 				appendResult( event.results[ last_idx ][0].transcript.trim() );
-				showProcess( "" );
+				setProcess( "" );
 
 			} else {
 				// 変換途中の入力情報
 				let possiblity = [].slice.call( event.results[ last_idx ] ).map( 
 							function( result ) { return result.transcript; } 
 						).join('\n\n');
-				showProcess( possiblity );
+				setProcess( possiblity );
 			}
 		});
 
@@ -85,7 +83,7 @@
 	<br>
 		<font size="2">途中経過</font>
 	<br>
-		<textarea id="LOG_AREA" rows=4 cols=80></textarea>
+		<textarea id="PROCESS_AREA" rows=4 cols=80></textarea>
 	<br>
 		<font size="2">認識結果</font>
 	<br>

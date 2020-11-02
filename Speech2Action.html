@@ -62,6 +62,8 @@
 						url = "https://www.google.com/search?hl=ja&q=" + vals[1].trim();
 					} else if ( vals[2].trim().search( /Google Scholar|グーグルスカラー|Google スカラー/i ) != -1 ){
 						url = "https://scholar.google.com/scholar?hl=ja&q=" + vals[1].trim();
+					} else if ( vals[2].trim().search( /バイオアーカイブ/i ) != -1 ){
+						url = "https://www.biorxiv.org/search/" + vals[1].trim();
 					} else if ( vals[2].trim().search( /東京化成/i ) != -1 ){
 						url = "https://www.tcichemicals.com/JP/ja/search/?text=" + vals[1].trim();
 					}
@@ -100,6 +102,7 @@
 			<li><font size=-2>例)「official髭男dismをgoogleでさがす」</font></li>
 			<li><font size=-2>例)「lung cancerをgoogle scholarでさがす」</font></li>
 			<li><font size=-2>例)「酢酸を東京化成でさがす」</font></li>
+			<li><font size=-2>その他： bioRxiv(バイオアーカイブ)</font></li>
 		</ul>
 	</ul>
 	<font size="2">途中経過</font>

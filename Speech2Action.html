@@ -58,14 +58,16 @@
 				let vals = sentence.match( /(.+)を(.+)で/ );
 				if ( vals != null ){
 					let url = "";
-					if ( vals[2].trim().search( /Google|グーグル/i ) != -1 ){
-						url = "https://www.google.com/search?hl=ja&q=" + vals[1].trim();
-					} else if ( vals[2].trim().search( /Google Scholar|グーグルスカラー|Google スカラー/i ) != -1 ){
-						url = "https://scholar.google.com/scholar?hl=ja&q=" + vals[1].trim();
-					} else if ( vals[2].trim().search( /バイオアーカイブ/i ) != -1 ){
-						url = "https://www.biorxiv.org/search/" + vals[1].trim();
-					} else if ( vals[2].trim().search( /東京化成/i ) != -1 ){
-						url = "https://www.tcichemicals.com/JP/ja/search/?text=" + vals[1].trim();
+					let query = vals[1].trim();
+					let site = vals[2].trim();
+					if ( site.search( /Google|グーグル/i ) != -1 ){
+						url = "https://www.google.com/search?hl=ja&q=" + query;
+					} else if ( site.search( /Google Scholar|グーグルスカラー|Google スカラー/i ) != -1 ){
+						url = "https://scholar.google.com/scholar?hl=ja&q=" + query;
+					} else if ( site.search( /バイオアーカイブ/i ) != -1 ){
+						url = "https://www.biorxiv.org/search/" + query;
+					} else if ( site.search( /東京化成/i ) != -1 ){
+						url = "https://www.tcichemicals.com/JP/ja/search/?text=" + query;
 					}
 					$("#LINK_DIV").html(url);
 					$("#LINK_DIV").attr('href', url);
@@ -114,5 +116,6 @@
 	<textarea id="RESULT_AREA" rows=6 cols=80></textarea>
 	<br>
 	<a id="LINK_DIV" target="_blank"></a>
+	<iframe id="IRAME_AREA" src="https://www.biorxiv.org/search/SLE" width=”200″ height=”100″></iframe>
 </body>
 </html>

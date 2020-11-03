@@ -49,22 +49,22 @@
 ### 参考にしたサイト
  * Webページでブラウザの音声認識機能を使おう - Web Speech API Speech Recognition
    * このページを参考に自分で解釈しながら書き換えました。
-   * https://qiita.com/hmmrjn/items/4b77a86030ed0071f548
+   * [https://qiita.com/hmmrjn/items/4b77a86030ed0071f548](https://qiita.com/hmmrjn/items/4b77a86030ed0071f548)
 
  * SpeechRecognition( MDN )
-   * https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition
+   * [https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition)
 
  * 形態素解析(Kuromoji.js)を使うともっと面白そうです。
    * Kuromoji を使ってブラウザ上で形態素解析を行う (Reactあり/なし) @Qiita
-     * https://qiita.com/torao@github/items/45ad9640cf94d3169cae#react-%E3%82%92%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84%E6%96%B9%E6%B3%95
+     * [https://qiita.com/torao@github/items/45ad9640cf94d3169cae#react-%E3%82%92%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84%E6%96%B9%E6%B3%95](https://qiita.com/torao@github/items/45ad9640cf94d3169cae#react-%E3%82%92%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84%E6%96%B9%E6%B3%95)
 
  * electronだと50回/日の制限があるらしい(残念)
-   * https://qiita.com/akameco/items/b507d50e22b2e56e8827
+   * [https://qiita.com/akameco/items/b507d50e22b2e56e8827](https://qiita.com/akameco/items/b507d50e22b2e56e8827)
 
  * WindowsやMacの標準機能としての音声入力もありますよ。
-   * https://joshi-spa.jp/1038926/2
+   * [https://joshi-spa.jp/1038926/2](https://joshi-spa.jp/1038926/2)
 
 ---
 ### 以前書いた記事もぜひ
  * 画像認識をChromeで実装した話( PCのカメラを使ってQRコードを認識する例 )
-   * https://github.com/kochi0603/mishima12
+   * [https://github.com/kochi0603/mishima12](https://github.com/kochi0603/mishima12)

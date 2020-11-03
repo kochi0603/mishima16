@@ -55,7 +55,7 @@
 				appendResult( sentence );
 				setProcess( "" );
 
-				let vals = sentence.match( /(.+)を(.+)で/ );
+				let vals = sentence.match( /(.+)で(.+)を/ );
 				if ( vals != null ){
 					let url = "";
 					let query = vals[2].trim();

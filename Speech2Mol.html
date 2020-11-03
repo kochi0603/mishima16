@@ -55,12 +55,16 @@
 				setStatus( "認識結果[" + last_idx + "]");
 				let sentence = event.results[ last_idx ][0].transcript.trim();
 				// console.log( event.results[ last_idx ][0] );
+
+				sentence = sentence.replace( / /g, '' );
+				sentence = sentence.replace( /右かっこ|右括弧/g, ')' )
+					.replace( /左かっこ|左括弧/g, '(' )
+					.replace( /大/g, 'O' )
+					.replace( /しー|シー/g, 'C' );
 				appendResult( sentence );
 				setProcess( "" );
 
 				//let mol = Module.get_mol( "CC(=O)Oc1ccccc1C(=O)O" );
-				sentence = sentence.replace( / /g, '' );
-				sentence = sentence.replace( /右かっこ|右括弧/g, ')' ).replace( /左かっこ|左括弧/g, '(' ).replace( /大/g, 'O' ).replace( /しー|シー/g, 'C' );
 				let mol = Module.get_mol( sentence );
 				// console.log( mol );
 				let canvas = $("#MOL_CANVAS").get(0);

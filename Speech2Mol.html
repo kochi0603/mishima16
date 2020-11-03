@@ -94,28 +94,27 @@
 </script>
 </head>
 <body>
-	<font size="2">Speech2Mol 音声認識サンプル</font><br>
+	<span>Speech2Mol 音声認識サンプル</span><br>
 	<button id="START_BTN">start</button>
 	<button id="STOP_BTN">stop</button>
 	<input type="text" id="STATUS_LABEL" readonly="readonly" value="未実行"/>
 	<br>
-	<font size=-2>
-	O = 酸素、# = シャープ、( = 左かっこ、) = 右かっこ
+	<span>使い方</span>
 	<ul>
-		<li>C1CNCCN1</li>
+		<li>C1CCN1CC</li>
 		<li>CC(=O)NC1CCNCC1</li>
+		<li>O = 酸素、# = シャープ、( = 左かっこ、) = 右かっこ</li>
 	</ul>
-	</font>
 	<br>
-	<font size="-2">途中経過</font>
+	<span>途中経過</span>
 	<br>
 	<textarea id="PROCESS_AREA" rows=2 cols=80></textarea>
 	<br>
-	<font size="-2">認識結果</font>
+	<span>認識結果</span>
 	<br>
-	<textarea id="RESULT_AREA" rows=10 cols=80></textarea>
+	<textarea id="RESULT_AREA" rows=8 cols=80></textarea>
 	<br>
-	<canvas id="MOL_CANVAS" width="320" height="240" style="border:1px solid #000000;"></canvas>
+	<canvas id="MOL_CANVAS" width="240" height="180" style="border:1px solid #000000;"></canvas>
 	</div>
 </body>
 </html>

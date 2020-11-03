@@ -50,6 +50,9 @@
  * SpeechRecognition( MDN )
    * https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition
 
+ * 形態素解析(Kuromoji.js)を使うともっと面白そうです。(手は付けていないけど)
+   * https://qiita.com/torao@github/items/45ad9640cf94d3169cae#react-%E3%82%92%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84%E6%96%B9%E6%B3%95
+
 ---
 ### 以前書いた記事もぜひ
  * 画像認識をChromeで実装した話( PCのカメラを使ってQRコードを認識する例 )

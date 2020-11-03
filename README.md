@@ -46,6 +46,7 @@
 ---
 ### 参考にしたサイト
  * Webページでブラウザの音声認識機能を使おう - Web Speech API Speech Recognition
+   * このページを参考に自分で解釈しながら書き換えました。
    * https://qiita.com/hmmrjn/items/4b77a86030ed0071f548
 
  * SpeechRecognition( MDN )
@@ -54,6 +55,9 @@
  * 形態素解析(Kuromoji.js)を使うともっと面白そうです。
    * Kuromoji を使ってブラウザ上で形態素解析を行う (Reactあり/なし) @Qiita
      * https://qiita.com/torao@github/items/45ad9640cf94d3169cae#react-%E3%82%92%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84%E6%96%B9%E6%B3%95
+
+ * electronだと50回/日の制限があるらしい(残念)
+   * https://qiita.com/akameco/items/b507d50e22b2e56e8827
 
 ---
 ### 以前書いた記事もぜひ

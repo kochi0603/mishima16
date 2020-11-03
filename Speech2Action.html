@@ -58,8 +58,8 @@
 				let vals = sentence.match( /(.+)を(.+)で/ );
 				if ( vals != null ){
 					let url = "";
-					let query = vals[1].trim();
-					let site = vals[2].trim();
+					let query = vals[2].trim();
+					let site = vals[1].trim();
 					if ( site.search( /Google|グーグル/i ) != -1 ){
 						url = "https://www.google.com/search?hl=ja&q=" + query;
 					} else if ( site.search( /Google Scholar|グーグルスカラー|Google スカラー/i ) != -1 ){
@@ -99,12 +99,11 @@
 	<input type="text" id="STATUS_LABEL" readonly="readonly" value="未実行"/>
 	<br>
 	<ul>
-		<li><font size=-2>「○○を◆◆で探す」と話してみてください。</font></li>
+		<li><font size=-2>「◆◆で○○を探す」と話してみてください。</font></li>
 		<ul>
-			<li><font size=-2>例)「official髭男dismをgoogleでさがす」</font></li>
-			<li><font size=-2>例)「lung cancerをgoogle scholarでさがす」</font></li>
-			<li><font size=-2>例)「酢酸を東京化成でさがす」</font></li>
-			<li><font size=-2>その他： bioRxiv(バイオアーカイブ)</font></li>
+			<li><font size=-2>例)「googleでofficial髭男dismをさがす」</font></li>
+			<li><font size=-2>例)「東京化成で酢酸をさがす」</font></li>
+			<li><font size=-2>その他： bioRxiv(バイオアーカイブ)、google scholar</font></li>
 		</ul>
 	</ul>
 	<font size="2">途中経過</font>
@@ -116,6 +115,5 @@
 	<textarea id="RESULT_AREA" rows=6 cols=80></textarea>
 	<br>
 	<a id="LINK_DIV" target="_blank"></a>
-	<iframe id="IRAME_AREA" src="https://www.biorxiv.org/search/SLE" width=”200″ height=”100″></iframe>
 </body>
 </html>

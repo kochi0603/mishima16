@@ -53,4 +53,4 @@
 ---
 ### 以前書いた記事もぜひ
  * 画像認識をChromeで実装した話( PCのカメラを使ってQRコードを認識する例 )
- * https://github.com/kochi0603/mishima12
+   * https://github.com/kochi0603/mishima12

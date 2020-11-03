@@ -33,11 +33,12 @@
 
 ### サンプル3
 + おまけ
-  + SMILESを話して構造式を表示する(使う場面はありませんが、遊びです)
+  + SMILESを話して構造式を表示する。(使う場面はありませんが、遊びです)
+    + 複雑な分子を話して作ることができるか？
   + https://kochi0603.github.io/mishima16/Speech2Mol.html
 
   + (所感)
-    + まぁ難しい♪ かっこもあるし、2重結合や3重結合とか、向いてませんね。
+    + 難しい♪ かっこもあるし、2重結合や3重結合とか、音声認識には向いてませんね。
 
 ---
 ### 参考にしたサイト
@@ -46,3 +47,8 @@
 
  * SpeechRecognition( MDN )
    * https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition
+
+---
+### 以前書いた記事もぜひ
+ * 画像認識をChromeで実装した話( PCのカメラを使ってQRコードを認識する例 )
+ * https://github.com/kochi0603/mishima12

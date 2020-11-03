@@ -59,8 +59,12 @@
 				sentence = sentence.replace( / /g, '' );
 				sentence = sentence.replace( /右かっこ|右括弧/g, ')' )
 					.replace( /左かっこ|左括弧/g, '(' )
+					.replace( /イコール/g, '=' )
+					.replace( /シャープ/g, '#' )
 					.replace( /大/g, 'O' )
-					.replace( /しー|シー/g, 'C' );
+					.replace( /酸素/g, 'O' )
+					.replace( /小文字のシー|小文字のC/g, 'c' )
+					.replace( /しー|シー|4|４/g, 'C' );
 				appendResult( sentence );
 				setProcess( "" );
 
@@ -94,6 +98,11 @@
 	<button id="START_BTN">start</button>
 	<button id="STOP_BTN">stop</button>
 	<input type="text" id="STATUS_LABEL" readonly="readonly" value="未実行"/>
+	<br>
+	<ul>
+		<li>C1CNCCN1</li>
+		<li>CC(=O)NC1CCNCC1</li>
+	</ul>
 	<br>
 	<font size="2">途中経過</font>
 	<br>

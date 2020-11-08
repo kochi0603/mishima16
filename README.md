@@ -17,8 +17,8 @@
 # 試したこと
 ### サンプル1
 + 話した内容を文字列に忠実に変換できるか？
-  + そのまま表示するシンプルなサンプルです。
   + [https://kochi0603.github.io/mishima16/Speech2Text.html](https://kochi0603.github.io/mishima16/Speech2Text.html)
+    + そのまま表示するシンプルなサンプルです。
 
   + 所感
     + 長くてもちゃんとした文章なら、ちゃんと変換してくれました。文脈から正しい単語に変換するようです。 
@@ -29,8 +29,8 @@
 
 ### サンプル2
 + 話した内容からアクションにつなげられるか？
-  + 「google scholar で pain を探す」のように話すと、検索画面に飛ぶリンクを表示するサンプルです。
   + [https://kochi0603.github.io/mishima16/Speech2Action.html](https://kochi0603.github.io/mishima16/Speech2Action.html)
+    + 「google scholar で pain を探す」のように話すと、検索画面に飛ぶリンクを表示するサンプルです。
 
   + 所感
     + 当初は、「google pain」のように単語の列挙でアクションさせようとしましたが、文章じゃないと精度がわるいので文章で入力するようにしました。
@@ -40,10 +40,9 @@
 
 
 ### サンプル3
-+ おまけ
-  + SMILESを話して構造式を表示する。(こんなシチュエーションないですが。あくまで遊びです。)
-    + 複雑な分子を話して作ることができるか？
++ おまけ：複雑な分子を話して作ることができるか？
   + [https://kochi0603.github.io/mishima16/Speech2Mol.html](https://kochi0603.github.io/mishima16/Speech2Mol.html)
+    + SMILESを話して構造式を表示する。(こんなシチュエーションないですが。あくまで遊びです。)
 
   + 所感
     + 2重結合や3重結合とか構造が複雑になると、SMILESを音声認識させるのはやはり無理でした。

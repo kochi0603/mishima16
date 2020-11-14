@@ -69,6 +69,7 @@
  * 形態素解析(Kuromoji.js)を使うともっと面白そうです。
    * Kuromoji を使ってブラウザ上で形態素解析を行う (Reactあり/なし) @Qiita
      * [https://qiita.com/torao@github/items/45ad9640cf94d3169cae#react-%E3%82%92%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84%E6%96%B9%E6%B3%95](https://qiita.com/torao@github/items/45ad9640cf94d3169cae#react-%E3%82%92%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84%E6%96%B9%E6%B3%95)
+   * TinySegmenter(軽量。品詞ナシ) http://chasen.org/~taku/software/TinySegmenter/
 
  * electronだと50回/日の制限があるらしい(残念)
    * [https://qiita.com/akameco/items/b507d50e22b2e56e8827](https://qiita.com/akameco/items/b507d50e22b2e56e8827)

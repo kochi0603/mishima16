@@ -17,7 +17,6 @@
 + 話した内容を文字列に忠実に変換できるか？
   + [https://kochi0603.github.io/mishima16/Speech2Text.html](https://kochi0603.github.io/mishima16/Speech2Text.html)
     + そのまま表示するシンプルなサンプルです。
-    + [https://github.com/kochi0603/mishima16/blob/main/Speech2Text.html](ソースコード)
     + [ソースコード](https://github.com/kochi0603/mishima16/blob/main/Speech2Text.html)
 
   + 所感

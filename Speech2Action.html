@@ -55,7 +55,8 @@
 				// 変換が終わった場合の処理
 				setStatus( "認識結果[" + last_idx + "]");
 				let sentence = event.results[ last_idx ][0].transcript.trim();
-				appendResult( sentence );
+				let segs = segmenter.segment( sentence );
+				appendResult( segs.join(" | ") );
 				setProcess( "" );
 
 				let vals = sentence.match( /(.+)で(.+)を/ );
@@ -76,8 +77,6 @@
 					$("#LINK_DIV").attr('href', url);
 
 				}
-				let segs = segmenter.segment( sentence );
-				alert( segs.join(" | ") );
 				
 			} else {
 				// 変換途中の入力情報

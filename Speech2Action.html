@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <title>Speach2Text</title>
 <script type="text/javascript" src="static/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="static/tiny_segmenter.js" charset="UTF-8"></script>
 <script type="text/javascript">
 <!--
 	function setStatus(str) {
@@ -15,6 +16,8 @@
 	function appendResult(str) {
 		$("#RESULT_AREA").val( $("#RESULT_AREA").val() + "\n" + str );
 	};
+
+	let segmenter = new TinySegmenter();
 
 	$(document).ready(function(){
 		// Chrome と Firefox 両方に対応するための書き方
@@ -71,8 +74,11 @@
 					}
 					$("#LINK_DIV").html(url);
 					$("#LINK_DIV").attr('href', url);
-				}
 
+				}
+				let segs = segmenter.segment( sentence );
+				alert( segs.join(" | ") );
+				
 			} else {
 				// 変換途中の入力情報
 				let possiblity = [].slice.call( event.results[ last_idx ] ).map( 

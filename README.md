@@ -49,7 +49,9 @@
 
 ### まとめ
 * Javascriptだけで結構使い物になりました。イントラの既存のシステムと連携も容易ですし。
-* が、短い単語、専門用語やシステム名などを、現場で使うには学習させる方がよさそうです。
+* ですが、日本語と英語の区別、短い単語（番号類）、専門用語やシステム名などを、現場で使うには学習と一工夫が必要そうです。
+
+* IBM watson
 
 ---
 ### 参考にしたサイト
@@ -68,8 +70,11 @@
  * electronだと50回/日の制限があるらしい(残念)
    * [https://qiita.com/akameco/items/b507d50e22b2e56e8827](https://qiita.com/akameco/items/b507d50e22b2e56e8827)
 
- * WindowsやMacの標準機能としての音声入力もありますよ。
+ * WindowsやMacの標準機能としての音声入力(試してないけど)
    * [https://joshi-spa.jp/1038926/2](https://joshi-spa.jp/1038926/2)
+
+ * IBM watson（試してないけど）
+   * https://www.ibm.com/jp-ja/cloud/watson-speech-to-text
 
 ---
 ### 以前書いた記事もぜひ

@@ -57,13 +57,13 @@
 				// console.log( event.results[ last_idx ][0] );
 
 				sentence = sentence.replace( / /g, '' )
-					.replace( /右かっこ|右括弧/g, ')' )
-					.replace( /左かっこ|左括弧/g, '(' )
+					.replace( /みぎ|右/g, ')' )
+					.replace( /ひだり|左/g, '(' )
 					.replace( /イコール/g, '=' )
 					.replace( /シャープ/g, '#' )
 					.replace( /大/g, 'O' )
-					.replace( /酸素/g, 'O' )
-					.replace( /小文字のシー|小文字のC/g, 'c' )
+					.replace( /おー|オー|お|オ|酸素/g, 'O' )
+					.replace( /す|ス/g, 'c' )
 					.replace( /しー|シー|4|４/g, 'C' );
 				appendResult( sentence );
 				setProcess( "" );
@@ -100,9 +100,9 @@
 	<br>
 	<span>使い方</span>
 	<ul>
-		<li>C1CCN1CC</li>
-		<li>CC(=O)NC1CCNCC1</li>
-		<li>O = 酸素、# = シャープ、( = 左かっこ、) = 右かっこ</li>
+		<li>O = 酸素、# = シャープ、( = 左、) = 右</li>
+		<li>C1CCN1CC  : シー いち シー シー エヌ いち シー シー</li>
+		<li>CC(=O)NC1CCNCC1: シー シー ひだり イコール さんそ みぎ エヌ シー いち シー シー エヌ いち シー シー いち</li>
 	</ul>
 	<br>
 	<span>途中経過</span>

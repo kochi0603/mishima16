@@ -30,8 +30,13 @@
 		// rec.lang = $("#LANG_SEL").val();
 
 		rec.addEventListener('start', function() {
-			rec.lang = $("#LANG_SEL").val();
-			alert(rec.lang);
+			if( rec.lang != $("#LANG_SEL").val() ){
+				const SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
+				const rec = new SpeechRecognition();
+				rec.continuous = true;
+				rec.interimResults = true;
+				rec.lang = $("#LANG_SEL").val();
+			}
 			setStatus("開始");
 		});
 		rec.addEventListener('end', function() {
@@ -85,8 +90,8 @@
 	<button id="STOP_BTN">stop</button>
 	<input type="text" id="STATUS_LABEL" readonly="readonly" value="未実行"/>
 	<br>
-	髪の毛が後退しているのではない。私が前進しているのである。（孫正義）<br>
-	
+	例) 髪の毛が後退しているのではない。私が前進しているのである。（孫正義）<br>
+	<br>
 	<span>変換過程</span>
 	<br>
 	<textarea id="PROCESS_AREA" rows=4 cols=80></textarea>

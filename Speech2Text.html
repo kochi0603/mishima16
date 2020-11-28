@@ -25,9 +25,6 @@
 		rec.continuous = true;
 		// 変換途中の結果を受け取りたいときtrueにする。変換途中の時は、isFinalはfalseとなっている
 		rec.interimResults = true;
-		// 複数の言語に変換可能
-		//rec.lang = "ja-JP"
-		//rec.lang = "en-US"
 
 		rec.addEventListener('start', function() {
 			setStatus("開始");
@@ -87,6 +84,7 @@
 	<button id="START_JP_BTN">日本語start</button>
 	<button id="STOP_BTN">stop</button>
 	<input type="text" id="STATUS_LABEL" readonly="readonly" value="未実行"/>
+	<br>
 	言語を変更する時はページを再描画してください<br>
 	<br>
 	例) 髪の毛が後退しているのではない。私が前進しているのである。（孫正義）<br>

@@ -68,6 +68,8 @@
 						url = "https://www.google.com/search?hl=ja&q=" + query;
 					} else if ( site.search( /Google Scholar|グーグルスカラー|Google スカラー/i ) != -1 ){
 						url = "https://scholar.google.com/scholar?hl=ja&q=" + query;
+					} else if ( site.search( /PubMed/i ) != -1 ){
+						url = "https://pubmed.ncbi.nlm.nih.gov/?term=" + query;
 					} else if ( site.search( /バイオアーカイブ/i ) != -1 ){
 						url = "https://www.biorxiv.org/search/" + query;
 					} else if ( site.search( /東京化成/i ) != -1 ){
@@ -108,8 +110,10 @@
 		<li>「◆◆で○○を探す」と話してみてください。</li>
 		<ul>
 			<li>例)「googleでofficial髭男dismをさがす」</li>
+			<li>例)「google scholarでofficial髭男dismをさがす」</li>
+			<li>例)「googleでofficial髭男dismをさがす」</li>
+			<li>例)「バイオアーカイブでofficial髭男dismをさがす」</li>
 			<li>例)「東京化成で酢酸をさがす」</li>
-			<li>その他： bioRxiv(バイオアーカイブ)、google scholar</li>
 		</ul>
 	</ul>
 	<span>変換過程</span>

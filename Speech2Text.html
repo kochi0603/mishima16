@@ -27,7 +27,7 @@
 		rec.interimResults = true;
 		// 複数の言語に変換可能
 		//rec.lang = "ja-JP"
-		rec.lang = "en-US"
+		//rec.lang = "en-US"
 
 		rec.addEventListener('start', function() {
 			setStatus("開始");
@@ -66,7 +66,12 @@
 			}
 		});
 
-		$("#START_BTN").on( 'click', function() {
+		$("#START_EN_BTN").on( 'click', function() {
+			rec.lang = "en-US"
+			rec.start();
+		});
+		$("#START_JP_BTN").on( 'click', function() {
+			rec.lang = "ja-JP"
 			rec.start();
 		});
 		$("#STOP_BTN").on( 'click', function() {
@@ -78,9 +83,11 @@
 </head>
 <body style="font-size: 14px;">
 	<span>Speech2Text 音声認識サンプル</span><br>
-	<button id="START_BTN">start</button>
+	<button id="START_EN_BTN">英語start</button>
+	<button id="START_JP_BTN">日本語start</button>
 	<button id="STOP_BTN">stop</button>
 	<input type="text" id="STATUS_LABEL" readonly="readonly" value="未実行"/>
+	言語を変更する時はページを再描画してください<br>
 	<br>
 	例) 髪の毛が後退しているのではない。私が前進しているのである。（孫正義）<br>
 	<br>

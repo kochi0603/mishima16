@@ -26,9 +26,11 @@
 		// 変換途中の結果を受け取りたいときtrueにする。変換途中の時は、isFinalはfalseとなっている
 		rec.interimResults = true;
 		// 複数の言語に変換可能
-		rec.lang = "ja-JP" // "en-US"
+		// rec.lang = "ja-JP" // "en-US"
+		// rec.lang = $("#LANG_SEL").val();
 
 		rec.addEventListener('start', function() {
+			rec.lang = $("#LANG_SEL").val();
 			setStatus("開始");
 		});
 		rec.addEventListener('end', function() {
@@ -77,6 +79,7 @@
 </head>
 <body style="font-size: 14px;">
 	<span>Speech2Text 音声認識サンプル</span><br>
+	<select id="LANG_SEL"><option value="ja-JP">JP</option><option value="en-US">EN</option></button>
 	<button id="START_BTN">start</button>
 	<button id="STOP_BTN">stop</button>
 	<input type="text" id="STATUS_LABEL" readonly="readonly" value="未実行"/>

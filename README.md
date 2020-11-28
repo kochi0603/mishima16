@@ -33,8 +33,9 @@
 
   + 所感
     + 本当は、「google pain」のように単語の列挙でアクションさせたかったが、サンプル1のように文章じゃないと精度が悪かったので文章で入力するようにしました。
-    + シンプルな実装ですが、もう一工夫で現場で使えそう。
-      + 形態素解析で、目的語や動詞を認識すればもっとよいものになりそうです。
+    + 日本語と英語の区別、短い単語（番号類）、専門用語やシステム名など、歯がゆい感じ。
+    + シンプルな実装ですが、もう一工夫、ふた工夫必要です。
+      + 形態素解析で、目的語や動詞を認識すれば幅が広がりそうです。
 
 
 ### サンプル3
@@ -51,8 +52,6 @@
 * Javascriptだけで結構使い物になりました。イントラの既存のシステムと連携も容易ですし。
 * ですが、日本語と英語の区別、短い単語（番号類）、専門用語やシステム名などを、現場で使うには学習と一工夫が必要そうです。
 
-* IBM watson
-
 ---
 ### 参考にしたサイト
  * Webページでブラウザの音声認識機能を使おう - Web Speech API Speech Recognition
@@ -66,6 +65,7 @@
    * Kuromoji を使ってブラウザ上で形態素解析を行う (Reactあり/なし) @Qiita
      * [https://qiita.com/torao@github/items/45ad9640cf94d3169cae#react-%E3%82%92%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84%E6%96%B9%E6%B3%95](https://qiita.com/torao@github/items/45ad9640cf94d3169cae#react-%E3%82%92%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84%E6%96%B9%E6%B3%95)
    * TinySegmenter(軽量。品詞ナシ) http://chasen.org/~taku/software/TinySegmenter/
+   　＊ サンプル2で実装してみた
 
  * electronだと50回/日の制限があるらしい(残念)
    * [https://qiita.com/akameco/items/b507d50e22b2e56e8827](https://qiita.com/akameco/items/b507d50e22b2e56e8827)

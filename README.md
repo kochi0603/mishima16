@@ -38,7 +38,7 @@
 
 
 ### サンプル3
-+ おまけ：複雑な分子を話して作ることができるか？
++ おまけ：分子を話して描画することができるか？
   + [https://kochi0603.github.io/mishima16/Speech2Mol.html](https://kochi0603.github.io/mishima16/Speech2Mol.html)
     + SMILESを話して構造式を表示する。(こんなシチュエーションないですが。あくまで遊びです。)
     + [ソースコード](https://github.com/kochi0603/mishima16/blob/main/Speech2Mol.html)

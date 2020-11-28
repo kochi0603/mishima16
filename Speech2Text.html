@@ -31,6 +31,7 @@
 
 		rec.addEventListener('start', function() {
 			rec.lang = $("#LANG_SEL").val();
+			alert(rec.lang);
 			setStatus("開始");
 		});
 		rec.addEventListener('end', function() {

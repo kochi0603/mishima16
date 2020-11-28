@@ -72,8 +72,6 @@
 						url = "https://pubmed.ncbi.nlm.nih.gov/?term=" + query;
 					} else if ( site.search( /バイオアーカイブ/i ) != -1 ){
 						url = "https://www.biorxiv.org/search/" + query;
-					} else if ( site.search( /東京化成/i ) != -1 ){
-						url = "https://www.tcichemicals.com/JP/ja/search/?text=" + query;
 					}
 					$("#LINK_DIV").html(url);
 					$("#LINK_DIV").attr('href', url);
@@ -109,11 +107,10 @@
 	<ul>
 		<li>「◆◆で○○を探す」と話してみてください。</li>
 		<ul>
-			<li>例)「googleでofficial髭男dismをさがす」</li>
-			<li>例)「google scholarでofficial髭男dismをさがす」</li>
-			<li>例)「googleでofficial髭男dismをさがす」</li>
-			<li>例)「バイオアーカイブでofficial髭男dismをさがす」</li>
-			<li>例)「東京化成で酢酸をさがす」</li>
+			<li>例)「google で official髭男dism を さがす」</li>
+			<li>例)「google scholar で 〇〇 をさがす」</li>
+			<li>例)「PubMed で 〇〇 を さがす」</li>
+			<li>例)「バイオアーカイブ で  〇〇 をさがす」</li>
 		</ul>
 	</ul>
 	<span>変換過程</span>
